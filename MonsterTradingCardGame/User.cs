@@ -8,7 +8,7 @@ namespace MonsterTradingCardGame
 {
     class User
     {
-        private string _username { get; set; }
-        private string _password { get; set; }
+        private string Username { get; set; }
+        private string Password { get; set; }
     }
 }
