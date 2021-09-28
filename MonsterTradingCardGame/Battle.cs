@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace MonsterTradingCardGame
 {
-    class User
+    class Battle
     {
-        private string Username { get; set; }
-        private string Password { get; set; }
-        Stack<ICard> Deck = new Stack<ICard>();
+
     }
 }
