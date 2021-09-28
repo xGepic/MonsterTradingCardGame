@@ -8,7 +8,7 @@ namespace MonsterTradingCardGame
 {
     interface ICard
     {
-        enum elementType
+        enum ElementType
         {
             normal,
             fire,
