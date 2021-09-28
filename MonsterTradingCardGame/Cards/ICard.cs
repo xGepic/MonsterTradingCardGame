@@ -8,6 +8,6 @@ namespace MonsterTradingCardGame
 {
     interface ICard
     {
-        //Methods
+
     }
 }

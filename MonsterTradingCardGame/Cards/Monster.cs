@@ -10,7 +10,7 @@ namespace MonsterTradingCardGame.Cards
     {
         public Monster()
         {
-
+            
         }
     }
 }
