@@ -6,17 +6,11 @@ using System.Threading.Tasks;
 
 namespace MonsterTradingCardGame.Cards
 {
-    enum ElementType
+    class Card : CardBase, ICard
     {
-        normal,
-        fire,
-        water
-    }
-    abstract class CardBase
-    {
-        public CardBase()
+        public Card() : base()
         {
-            //CardBase
+            //Card
         }
     }
 }
