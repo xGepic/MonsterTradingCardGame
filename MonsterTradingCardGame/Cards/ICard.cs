@@ -8,11 +8,6 @@ namespace MonsterTradingCardGame
 {
     interface ICard
     {
-        enum ElementType
-        {
-            normal,
-            fire,
-            water
-        }
+        //ICard
     }
 }

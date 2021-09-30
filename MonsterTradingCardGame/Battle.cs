@@ -8,6 +8,6 @@ namespace MonsterTradingCardGame
 {
     class Battle
     {
-
+        //Battle
     }
 }
