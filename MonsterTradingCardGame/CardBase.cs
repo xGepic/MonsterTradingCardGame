@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace MonsterTradingCardGame.Cards
 {
-    class Card : CardBase, ICard
+    enum ElementType
     {
-        
+        normal,
+        fire,
+        water
+    }
+    abstract class CardBase
+    {
+        //CardBase
     }
 }
