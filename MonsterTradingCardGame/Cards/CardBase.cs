@@ -4,14 +4,16 @@ namespace MonsterTradingCardGame.Cards
 {
     public abstract class CardBase
     {
-        public string Name { get; set; }
-        public int Damage { get; set; }
-        public ElementType Type { get; set; }
-        public CardBase(string cardname, int cardDamage, ElementType cardType)
+        protected string Name { get; set; }
+        protected int Damage { get; set; }
+        protected ElementType EType { get; set; }
+        protected MonsterType MType {get;set;}
+        public CardBase(string cardname, int cardDamage, ElementType cardType, MonsterType monsterType)
         {
             Name = cardname;
             Damage = cardDamage;
-            Type = cardType;
+            EType = cardType;
+            MType = monsterType;
         }
     }
 }
