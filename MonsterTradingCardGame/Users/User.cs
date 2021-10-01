@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace MonsterTradingCardGame
+{
+    class User : IUser
+    {
+        private string Username { get; set; }
+        private string Password { get; set; }
+        private bool IsRegistered { get; set; }
+        Stack<ICard> Deck = new Stack<ICard>();
+        List<ICard> MyCards = new List<ICard>();
+        public User(string myUsername, string myPassword)
+        {
+            Username = myUsername;
+            Password = myPassword;
+        }
+    }
+}

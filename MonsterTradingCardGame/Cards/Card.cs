@@ -2,11 +2,11 @@
 
 namespace MonsterTradingCardGame.Cards
 {
-    class Card : CardBase, ICard
+    public class Card : CardBase, ICard
     {
-        public Card() : base()
+        public Card(string cardname, int cardDamage, ElementType cardType) : base(cardname, cardDamage, cardType)
         {
-            //Card
+            Console.WriteLine("Here");
         }
     }
 }
