@@ -4,6 +4,9 @@ namespace MonsterTradingCardGame
 {
     class Battle
     {
-        //Battle
+        public Battle()
+        {
+            //Battle
+        }
     }
 }

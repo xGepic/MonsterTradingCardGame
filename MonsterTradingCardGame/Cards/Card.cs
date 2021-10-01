@@ -6,7 +6,7 @@ namespace MonsterTradingCardGame.Cards
     {
         public Card(string cardname, int cardDamage, ElementType cardType) : base(cardname, cardDamage, cardType)
         {
-            Console.WriteLine("Here");
+            //Card
         }
     }
 }
