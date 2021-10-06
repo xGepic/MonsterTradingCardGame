@@ -8,6 +8,9 @@ namespace MonsterTradingCardGame
 {
     interface ICard
     {
-        //ICard
+        protected string Name { get; set; }
+        protected int Damage { get; set; }
+        protected ElementType EType { get; set; }
+        protected MonsterType MType { get; set; }
     }
 }
