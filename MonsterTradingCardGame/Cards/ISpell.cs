@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace MonsterTradingCardGame.Cards
 {
-    public abstract class CardBase : ICard
+    interface ISpell : ICard
     {
-        string ICard.Name { get; set; }
-        int ICard.Damage { get; set; }
+        protected ElementType Etype { get; set; }
     }
 }
