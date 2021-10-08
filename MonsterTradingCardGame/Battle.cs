@@ -4,9 +4,12 @@ namespace MonsterTradingCardGame
 {
     class Battle
     {
-        public Battle()
+        private readonly ICard Card1;
+        private readonly ICard Card2;
+        public Battle(ICard card1, ICard card2)
         {
-            //Battle
+            Card1 = card1;
+            Card2 = card2;
         }
     }
 }

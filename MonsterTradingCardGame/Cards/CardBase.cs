@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MonsterTradingCardGame.Cards
 {
-    class Spell : ICard
+    public abstract class CardBase : ICard
     {
         string ICard.Name { get; set; }
         int ICard.Damage { get; set; }

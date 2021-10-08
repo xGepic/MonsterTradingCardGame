@@ -8,8 +8,8 @@ namespace MonsterTradingCardGame
 {
     public enum ElementType
     {
-        normal,
-        fire,
-        water
+        Normal,
+        Fire,
+        Water
     }
 }
