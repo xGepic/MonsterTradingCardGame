@@ -6,9 +6,18 @@ using System.Threading.Tasks;
 
 namespace MonsterTradingCardGame.Cards
 {
-    public abstract class CardBase : ICard
+    public abstract class CardBase : IMonster, ISpell
     {
-        string ICard.Name { get; set; }
-        int ICard.Damage { get; set; }
+        public string Name { get; set; }
+        public int Damage { get; set; }
+        public MonsterType Mtype { get; set; }
+        public ElementType Etype { get; set; }
+        public CardBase(string name, int dmg, MonsterType typeM, ElementType typeE)
+        {
+            this.Name = name;
+            this.Damage = dmg;
+            this.Mtype = typeM;
+            this.Etype = typeE;
+        }
     }
 }

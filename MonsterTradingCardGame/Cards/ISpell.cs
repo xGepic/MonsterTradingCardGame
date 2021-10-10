@@ -8,6 +8,6 @@ namespace MonsterTradingCardGame.Cards
 {
     interface ISpell : ICard
     {
-        protected ElementType Etype { get; set; }
+        ElementType Etype { get; set; }
     }
 }

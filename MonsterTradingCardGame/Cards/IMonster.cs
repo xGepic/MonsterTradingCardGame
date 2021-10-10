@@ -8,6 +8,6 @@ namespace MonsterTradingCardGame.Cards
 {
     interface IMonster : ICard
     {
-        protected MonsterType Mtype { get; set; }
+        MonsterType Mtype { get; set; }
     }
 }
