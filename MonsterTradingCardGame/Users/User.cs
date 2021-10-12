@@ -27,5 +27,14 @@ namespace MonsterTradingCardGame
             //add cards to Stack
             this.Coins -= PackCost;
         }
+        private void CreateDeck(List<ICard> mystack)
+        {
+            //Add Cards from Stack to Deck
+        }
+        private void Trade()
+        {
+            //Trade
+            //Remove
+        }
     }
 }
