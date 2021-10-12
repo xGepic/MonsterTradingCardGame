@@ -4,7 +4,7 @@ namespace MonsterTradingCardGame
 {
     interface ICard
     {
-        protected string Name { get; set; }
-        protected int Damage { get; set; }
+        string Name { get; set; }
+        int Damage { get; set; }
     }
 }
