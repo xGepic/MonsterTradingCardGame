@@ -6,7 +6,7 @@ namespace MonsterTradingCardGame
     {
         static void Main(string[] args)
         {
-            //Main
+
         }
     }
 }

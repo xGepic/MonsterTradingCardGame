@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MonsterTradingCardGame.Cards
 {
     interface IMonster : ICard
     {
         protected MonsterType Mtype { get; set; }
+        protected ElementType EType { get; set; }
     }
 }

@@ -7,8 +7,9 @@ namespace MonsterTradingCardGame
     {
         private string Username { get; set; }
         private string Password { get; set; }
-        private bool IsRegistered { get; set; }
-        Stack<ICard> Deck = new();
+        private int Money { get; set; }
+        private Guid Token { get; set; }
+        List<ICard> Deck = new();
         List<ICard> MyCards = new();
         public User(string myUsername, string myPassword)
         {
