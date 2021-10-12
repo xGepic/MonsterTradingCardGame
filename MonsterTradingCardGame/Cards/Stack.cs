@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MonsterTradingCardGame.ToolBox
+namespace MonsterTradingCardGame
 {
-    public static class ToolBox
+    public class Stack
     {
-        //ToolBox
+        public Stack()
+        {
+            //Stack
+        }
     }
 }

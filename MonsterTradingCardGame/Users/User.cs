@@ -8,8 +8,10 @@ namespace MonsterTradingCardGame
         private const int StartingCoins = 20;
         private const int PackCost = 5;
         private const int StartingElo = 100;
-        List<ICard> Stack = new();
-        List<ICard> Deck = new();
+        Deck MyDeck = new();
+        Stack MyStack = new();
+        private int Wins { get; set; }
+        private int Loses { get; set; }
         private string Username { get; set; }
         private string Password { get; set; }
         private int Coins { get; set; }

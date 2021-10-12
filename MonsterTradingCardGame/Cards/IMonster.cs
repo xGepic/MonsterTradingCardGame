@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MonsterTradingCardGame.Cards
+namespace MonsterTradingCardGame
 {
     interface IMonster : ICard
     {
