@@ -41,7 +41,15 @@ namespace MonsterTradingCardGame
         }
         public void RemoveCard(ICard Card)
         {
-            //Remove Card
+            bool myTry = MyStack.TryGetValue(Card.Name, out ICard card);
+            if (myTry)
+            {
+                MyStack.Remove(card.Name);
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }
