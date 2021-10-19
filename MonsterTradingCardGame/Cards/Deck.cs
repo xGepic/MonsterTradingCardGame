@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace MonsterTradingCardGame
 {
-    public class Deck
+    public class Deck : IDeck
     {
         Dictionary<string, ICard> MyCards;
         public Deck()
@@ -15,10 +15,14 @@ namespace MonsterTradingCardGame
         {
             this.MyCards = cards;
         }
+        public void AddCard(ICard Card)
+        {
+            //AddCard
+        }
         public ICard GetCard(string name)
         {
-            bool boo = MyCards.TryGetValue(name, out ICard card);
-            if (boo)
+            bool myTry = MyCards.TryGetValue(name, out ICard card);
+            if (myTry)
             {
                 return card;
             }
@@ -35,10 +39,9 @@ namespace MonsterTradingCardGame
         {
             Cards = this.MyCards;
         }
-        public int AddCard(ICard Card)
+        public void RemoveCard(ICard Card)
         {
-            //Add Card
-            return 0;
+            //Remove Card
         }
     }
 }

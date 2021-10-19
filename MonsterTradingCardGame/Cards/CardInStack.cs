@@ -4,12 +4,44 @@ using System.Linq;
 
 namespace MonsterTradingCardGame
 {
-    public class CardInStack
+    public class CardInStack : IDeck
     {
-        Dictionary<string, ICard> MyCardsInStack;
+        Dictionary<string, ICard> MyCardInStack;
         public CardInStack()
         {
-            //Card in Stack
+            MyCardInStack = new Dictionary<string, ICard>();
+        }
+        public CardInStack(Dictionary<string, ICard> cards)
+        {
+            this.MyCardInStack = cards;
+        }
+        public void AddCard(ICard Card)
+        {
+            //Add Card
+        }
+        public ICard GetCard(string name)
+        {
+            bool myTry = MyCardInStack.TryGetValue(name, out ICard card);
+            if (myTry)
+            {
+                return card;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public ICard GetCard(int id)
+        {
+            return MyCardInStack.ElementAt(id).Value;
+        }
+        public void GetCards(out Dictionary<string, ICard> Cards)
+        {
+            Cards = this.MyCardInStack;
+        }
+        public void RemoveCard(ICard Card)
+        {
+            //Remove Card
         }
     }
 }
