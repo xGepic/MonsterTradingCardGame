@@ -2,7 +2,7 @@
 
 namespace MonsterTradingCardGame
 {
-    interface ICard
+    public interface ICard
     {
         string Name { get; set; }
         int Damage { get; set; }

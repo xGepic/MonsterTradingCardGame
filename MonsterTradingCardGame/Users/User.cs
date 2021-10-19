@@ -8,8 +8,9 @@ namespace MonsterTradingCardGame
         private const int StartingCoins = 20;
         private const int PackCost = 5;
         private const int StartingElo = 100;
-        Deck MyDeck = new();
-        Stack MyStack = new();
+
+        //Deck and Stack
+
         private int Wins { get; set; }
         private int Loses { get; set; }
         private string Username { get; set; }
@@ -23,20 +24,6 @@ namespace MonsterTradingCardGame
             Password = myPassword;
             Coins = StartingCoins;
             Elo = StartingElo;
-        }
-        private void BuyPackage()
-        {
-            //add cards to Stack
-            this.Coins -= PackCost;
-        }
-        private void CreateDeck(List<ICard> mystack)
-        {
-            //Add Cards from Stack to Deck
-        }
-        private void Trade()
-        {
-            //Trade
-            //Remove
         }
     }
 }
