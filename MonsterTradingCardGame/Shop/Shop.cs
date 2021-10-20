@@ -8,6 +8,7 @@ namespace MonsterTradingCardGame
 {
     class Shop
     {
+        private const int PackCost = 5;
         public Shop()
         {
             //Shop

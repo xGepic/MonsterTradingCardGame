@@ -6,11 +6,9 @@ namespace MonsterTradingCardGame
     class User
     {
         private const int StartingCoins = 20;
-        private const int PackCost = 5;
         private const int StartingElo = 100;
-
-        //Deck and Stack
-
+        Deck MyDeck = new();
+        Stack MyStack = new();
         private int Wins { get; set; }
         private int Loses { get; set; }
         private string Username { get; set; }
