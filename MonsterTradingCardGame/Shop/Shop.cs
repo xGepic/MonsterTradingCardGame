@@ -9,6 +9,7 @@ namespace MonsterTradingCardGame
     class Shop
     {
         private const int PackCost = 5;
+        List<ICard> Package = new();
         public Shop()
         {
             //Shop
