@@ -6,5 +6,6 @@ namespace MonsterTradingCardGame
     {
         string Name { get; set; }
         int Damage { get; set; }
+        CardType MyCardtype { get; set; }
     }
 }

@@ -6,18 +6,14 @@ namespace MonsterTradingCardGame
 {
     public class Deck : IDeck
     {
-        Dictionary<string, ICard> MyCards;
+        public Dictionary<string, ICard> MyCards;
         public Deck()
         {
             MyCards = new Dictionary<string, ICard>();
         }
-        public Deck(Dictionary<string, ICard> cards)
-        {
-            this.MyCards = cards;
-        }
         public void AddCard(ICard Card)
         {
-            if (MyCards.Count < 4)
+            if(MyCards.Count < 4)
             {
                 //Add Card
             }
@@ -38,21 +34,10 @@ namespace MonsterTradingCardGame
         {
             return MyCards.ElementAt(id).Value;
         }
-        public void GetCards(out Dictionary<string, ICard> Cards)
-        {
-            Cards = this.MyCards;
-        }
+
         public void RemoveCard(ICard Card)
         {
-            bool myTry = MyCards.TryGetValue(Card.Name, out ICard card);
-            if (myTry)
-            {
-                MyCards.Remove(card.Name);
-            }
-            else
-            {
-                return;
-            }
+            //Remove Card
         }
     }
 }

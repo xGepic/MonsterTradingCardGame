@@ -7,15 +7,16 @@ namespace MonsterTradingCardGame
     {
         private const int StartingCoins = 20;
         private const int StartingElo = 100;
-        Deck MyDeck = new();
-        Stack MyStack = new();
-        private int Wins { get; set; }
-        private int Loses { get; set; }
         private string Username { get; set; }
         private string Password { get; set; }
-        private int Coins { get; set; }
+        public Deck MyDeck = new();
+        public Stack MyStack = new();
+        public int Wins { get; set; }
+        public int Loses { get; set; }
+
+        public int Coins { get; set; }
         public Guid Token { get; set; }
-        private int Elo { get; set; }
+        public int Elo { get; set; }
         public User(string myUsername, string myPassword)
         {
             Username = myUsername;

@@ -16,9 +16,5 @@ namespace MonsterTradingCardGame
             Deck1 = Deck1.OrderBy(x => rand.Next()).ToList();
             Deck2 = Deck2.OrderBy(x => rand.Next()).ToList();
         }
-        public void Combat()
-        {
-            //Combat
-        }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace MonsterTradingCardGame.Enums
+﻿namespace MonsterTradingCardGame
 {
     public enum CardType
     {
