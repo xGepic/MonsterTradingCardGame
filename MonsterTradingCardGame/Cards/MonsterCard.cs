@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MonsterTradingCardGame.Cards
+namespace MonsterTradingCardGame
 {
     class MonsterCard : ICard
     {
@@ -13,10 +13,12 @@ namespace MonsterTradingCardGame.Cards
         public CardType MyCardtype { get; set; }
         public ElementType MyElementType { get;set;}
         public MonsterType MyMonsterType { get; set; }
-        public MonsterCard(string name, int dmg)
+        public MonsterCard(string name, int dmg, ElementType eType, MonsterType mType)
         {
             Name = name;
             Damage = dmg;
+            MyElementType = eType;
+            MyMonsterType = mType;
             MyCardtype = CardType.Monster;
         }
     }

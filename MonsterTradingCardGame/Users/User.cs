@@ -13,16 +13,18 @@ namespace MonsterTradingCardGame
         public Stack MyStack = new();
         public int Wins { get; set; }
         public int Loses { get; set; }
-
         public int Coins { get; set; }
-        public Guid Token { get; set; }
         public int Elo { get; set; }
+        public string Token { get; set; }
         public User(string myUsername, string myPassword)
         {
             Username = myUsername;
             Password = myPassword;
+            Wins = 0;
+            Loses = 0;
             Coins = StartingCoins;
             Elo = StartingElo;
+            Token = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
         }
     }
 }

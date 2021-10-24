@@ -13,10 +13,11 @@ namespace MonsterTradingCardGame
         }
         public void AddCard(ICard Card)
         {
-            if(MyCards.Count < 4)
+            if (MyCards.Count < 10)
             {
-                //Add Card
+                MyCards.Add(Card.Name, Card);
             }
+            return;
         }
         public ICard GetCard(string name)
         {
@@ -37,7 +38,21 @@ namespace MonsterTradingCardGame
 
         public void RemoveCard(ICard Card)
         {
-            //Remove Card
+            if (MyCards.Count < 1)
+            {
+                return;
+            }
+            else
+            {
+                MyCards.Remove(Card.Name);
+            }
+        }
+        public void PrintCards()
+        {
+            foreach (var val in MyCards)
+            {
+                Console.WriteLine($"{val.Key} Found!");
+            }
         }
     }
 }

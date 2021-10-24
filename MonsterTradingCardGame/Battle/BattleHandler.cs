@@ -17,7 +17,10 @@ namespace MonsterTradingCardGame
         }
         public void StartBattle()
         {
-            //Battle
+            while (true)
+            {
+
+            }
         }
     }
 }
