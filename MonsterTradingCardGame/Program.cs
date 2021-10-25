@@ -14,20 +14,14 @@ namespace MonsterTradingCardGame
             Player1.MyDeck.AddCard(Menu.GetRngCard(2));
             Player1.MyDeck.AddCard(Menu.GetRngCard(3));
             Player1.MyDeck.AddCard(Menu.GetRngCard(4));
-            Player1.MyDeck.AddCard(Menu.GetRngCard(5));
 
             Player2.MyDeck.AddCard(Menu.GetRngCard2(1));
             Player2.MyDeck.AddCard(Menu.GetRngCard2(2));
             Player2.MyDeck.AddCard(Menu.GetRngCard2(3));
             Player2.MyDeck.AddCard(Menu.GetRngCard2(4));
-            Player2.MyDeck.AddCard(Menu.GetRngCard2(5));
-
-            Player1.MyDeck.PrintCards();
-            Console.WriteLine();
-            Player2.MyDeck.PrintCards();
 
             BattleHandler MyBattle = new(Player1, Player2);
-
+            MyBattle.StartBattle();
         }
     }
 }

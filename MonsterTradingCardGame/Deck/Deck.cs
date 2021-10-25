@@ -13,7 +13,7 @@ namespace MonsterTradingCardGame
         }
         public void AddCard(ICard Card)
         {
-            if (MyCards.Count < 10)
+            if (MyCards.Count < 4)
             {
                 MyCards.Add(Card.Name, Card);
             }
