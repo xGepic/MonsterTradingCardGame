@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MonsterTradingCardGame
+﻿namespace MonsterTradingCardGame
 {
     class Program
     {

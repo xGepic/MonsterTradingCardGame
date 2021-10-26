@@ -1,7 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace MonsterTradingCardGame.Database
@@ -10,7 +12,7 @@ namespace MonsterTradingCardGame.Database
     {
         public DBConnector()
         {
-            //Ctor
+
         }
     }
 }

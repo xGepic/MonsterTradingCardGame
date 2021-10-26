@@ -6,8 +6,9 @@ namespace MonsterTradingCardGame
     {
         public ICard GetCard(string name);
         public ICard GetCard(int id);
-        public void AddCard(ICard Card);
-        public void RemoveCard(ICard Card);
+        public int AddCard(ICard Card);
+        public int RemoveCard(string name);
         public void PrintCards();
+        public int CountCards();
     }
 }

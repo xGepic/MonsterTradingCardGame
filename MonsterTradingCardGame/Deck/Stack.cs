@@ -11,13 +11,17 @@ namespace MonsterTradingCardGame
         {
             MyStack = new Dictionary<string, ICard>();
         }
-        public void AddCard(ICard Card)
+        public int AddCard(ICard Card)
         {
-            if (MyStack.Count < 10)
+            if (MyStack.Count < 4)
             {
                 MyStack.Add(Card.Name, Card);
+                return 0;
             }
-            return;
+            else
+            {
+                return -1;
+            }
         }
         public ICard GetCard(string name)
         {
@@ -35,15 +39,15 @@ namespace MonsterTradingCardGame
         {
             return MyStack.ElementAt(id).Value;
         }
-        public void RemoveCard(ICard Card)
+        public int RemoveCard(string name)
         {
-            if (MyStack.Count < 1)
+            if (MyStack.Remove(name))
             {
-                return;
+                return 0;
             }
             else
             {
-                MyStack.Remove(Card.Name);
+                return -1;
             }
         }
         public void PrintCards()
@@ -52,6 +56,10 @@ namespace MonsterTradingCardGame
             {
                 Console.WriteLine($"{val.Key} Found!");
             }
+        }
+        public int CountCards()
+        {
+            return MyStack.Count;
         }
     }
 }

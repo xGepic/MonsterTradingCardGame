@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace MonsterTradingCardGame
 {
@@ -7,10 +6,10 @@ namespace MonsterTradingCardGame
     {
         private const int StartingCoins = 20;
         private const int StartingElo = 100;
-        private string Username { get; set; }
-        private string Password { get; set; }
         public Deck MyDeck = new();
         public Stack MyStack = new();
+        private string Username { get; }
+        private string Password { get; }
         public int Wins { get; set; }
         public int Loses { get; set; }
         public int Coins { get; set; }
