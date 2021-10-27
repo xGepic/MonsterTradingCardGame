@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace MonsterTradingCardGame
+﻿namespace MonsterTradingCardGame
 {
     public interface IDeck
     {
