@@ -11,51 +11,93 @@ namespace MonsterTradingCardGame
             Console.WriteLine("##############################\n");
             if ((Card1.MyCardtype == CardType.Monster && Card2.MyCardtype == CardType.Spell) || Card1.MyCardtype == CardType.Spell && Card2.MyCardtype == CardType.Monster)
             {
-                Console.WriteLine($"{Card1.Name} vs {Card2.Name}\n");
-                Console.WriteLine($"{Card1.Damage} vs {Card2.Damage}\n");
-                Console.WriteLine("##############################\n");
-                if (DamageFromCard1 < DamageFromCard2)
+                Console.WriteLine("Monster vs Spell Fight");
+                Console.WriteLine($"{Card1.Name} ({Card1.Damage}) vs {Card2.Name} ({Card2.Damage})\n");
+                if (DamageFromCard1 == 2 && DamageFromCard2 == 1)
                 {
+                    Console.WriteLine("Player 2 Won!");
+                    PrintLine();
                     return 2;
+                }
+                else if (DamageFromCard1 == 1 && DamageFromCard2 == 2)
+                {
+                    Console.WriteLine("Player 1 Won!");
+                    PrintLine();
+                    return 1;
                 }
                 else
                 {
-                    return 1;
+                    Console.WriteLine("It is a Draw!");
+                    PrintLine();
+                    return 3;
                 }
             }
             if (Card1.MyCardtype == CardType.Monster && Card2.MyCardtype == CardType.Monster)
             {
-                Console.WriteLine($"{Card1.Name} vs {Card2.Name}\n");
-                Console.WriteLine($"{Card1.Damage} vs {Card2.Damage}\n");
-                Console.WriteLine("##############################\n");
-                if (DamageFromCard1 < DamageFromCard2)
+                Console.WriteLine("MonsterFight");
+                Console.WriteLine($"{Card1.Name} ({Card1.Damage}) vs {Card2.Name} ({Card2.Damage})\n");
+                if (DamageFromCard1 == 2 && DamageFromCard2 == 1)
                 {
+                    Console.WriteLine("Player 2 Won!");
+                    PrintLine();
                     return 2;
+                }
+                else if (DamageFromCard1 == 1 && DamageFromCard2 == 2)
+                {
+                    Console.WriteLine("Player 1 Won!");
+                    PrintLine();
+                    return 1;
                 }
                 else
                 {
-                    return 1;
+                    Console.WriteLine("It is a Draw!");
+                    PrintLine();
+                    return 3;
                 }
             }
             if (Card1.MyCardtype == CardType.Spell && Card2.MyCardtype == CardType.Spell)
             {
-                Console.WriteLine($"{Card1.Name} vs {Card2.Name}\n");
-                Console.WriteLine($"{Card1.Damage} vs {Card2.Damage}\n");
-                Console.WriteLine("##############################\n");
-                if (DamageFromCard1 < DamageFromCard2)
+                Console.WriteLine("SpellFight!");
+                Console.WriteLine($"{Card1.Name} ({Card1.Damage}) vs {Card2.Name} ({Card2.Damage})\n");
+                if (DamageFromCard1 == 2 && DamageFromCard2 == 1)
                 {
+                    Console.WriteLine("Player 2 Won!");
+                    PrintLine();
                     return 2;
+                }
+                else if (DamageFromCard1 == 1 && DamageFromCard2 == 2)
+                {
+                    Console.WriteLine("Player 1 Won!");
+                    PrintLine();
+                    return 1;
                 }
                 else
                 {
-                    return 1;
+                    Console.WriteLine("It is a Draw!");
+                    PrintLine();
+                    return 3;
                 }
             }
             return -1;
         }
         private static int GetCardDamage(ICard card1, ICard card2)
         {
-            return 1;
+            if (card1.Damage > card2.Damage)
+            {
+                return 1;
+            }
+            if (card1.Damage < card2.Damage)
+            {
+                return 2;
+            }
+            else
+            {
+                return 3;
+            }
+        }
+        private static void PrintLine()
+        {
+            Console.WriteLine("##############################\n");
         }
     }
 }

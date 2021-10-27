@@ -17,7 +17,7 @@ namespace MonsterTradingCardGame
         public void StartBattle()
         {
             Random rand = new();
-            Console.WriteLine("          New Round!");
+            int j = 1;
             int Player1DeckCount = Player1.MyDeck.CountCards();
             int Player2DeckCount = Player2.MyDeck.CountCards();
             for (int i = 0; i < Player1DeckCount; i++)
@@ -36,6 +36,7 @@ namespace MonsterTradingCardGame
                 {
                     break;
                 }
+                Console.WriteLine($"Round {j}");
                 int p1Card = rand.Next(0, BattleDeck1.Count);
                 int p2Card = rand.Next(0, BattleDeck2.Count);
                 int whoWon = Battle.DamageCalc(BattleDeck1[p1Card], BattleDeck2[p2Card]);
@@ -49,10 +50,11 @@ namespace MonsterTradingCardGame
                     BattleDeck2.Add(BattleDeck1[p1Card]);
                     BattleDeck1.RemoveAt(p1Card);
                 }
+                j++;
             }
             if (BattleDeck1.Count == 0)
             {
-                Console.WriteLine("Player 2 Won!");
+                Console.WriteLine("Player 2 is the Winner!");
                 for (int i = 0; i < BattleDeck2.Count; i++)
                 {
                     Player2.MyStack.AddCard(BattleDeck2[i]);
@@ -60,7 +62,7 @@ namespace MonsterTradingCardGame
             }
             if (BattleDeck2.Count == 0)
             {
-                Console.WriteLine("Player 1 Won!");
+                Console.WriteLine("Player 1 is the Winner!");
                 for (int i = 0; i < BattleDeck1.Count; i++)
                 {
                     Player1.MyStack.AddCard(BattleDeck1[i]);
