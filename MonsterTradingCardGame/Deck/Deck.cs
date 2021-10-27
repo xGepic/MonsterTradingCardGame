@@ -39,7 +39,6 @@ namespace MonsterTradingCardGame
         {
             return MyCards.ElementAt(id).Value;
         }
-
         public int RemoveCard(string name)
         {
             if (MyCards.Remove(name))
@@ -61,6 +60,10 @@ namespace MonsterTradingCardGame
         public int CountCards()
         {
             return MyCards.Count;
+        }
+        public void ClearCards()
+        {
+            MyCards.Clear();
         }
     }
 }

@@ -6,10 +6,10 @@ namespace MonsterTradingCardGame
     {
         private const int StartingCoins = 20;
         private const int StartingElo = 100;
+        private readonly string Username;
+        private readonly string Password;
         public Deck MyDeck = new();
         public Stack MyStack = new();
-        private string Username { get; }
-        private string Password { get; }
         public int Wins { get; set; }
         public int Loses { get; set; }
         public int Coins { get; set; }

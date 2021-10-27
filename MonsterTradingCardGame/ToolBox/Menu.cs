@@ -6,7 +6,7 @@ namespace MonsterTradingCardGame
     {
         public static void PrintStartingMenu()
         {
-            Console.WriteLine("Monster Trading Card Game by Stefan Simanek\n");
+            Console.WriteLine("Monster Trading Card Game by Stefan Simanek\n\n");
         }
 
 

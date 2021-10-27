@@ -13,7 +13,7 @@ namespace MonsterTradingCardGame
         }
         public int AddCard(ICard Card)
         {
-            if (MyStack.Count < 4)
+            if (MyStack.Count < 9)
             {
                 MyStack.Add(Card.Name, Card);
                 return 0;
@@ -60,6 +60,10 @@ namespace MonsterTradingCardGame
         public int CountCards()
         {
             return MyStack.Count;
+        }
+        public void ClearCards()
+        {
+            MyStack.Clear();
         }
     }
 }

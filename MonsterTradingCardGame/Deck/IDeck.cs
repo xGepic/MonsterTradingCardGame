@@ -10,5 +10,6 @@ namespace MonsterTradingCardGame
         public int RemoveCard(string name);
         public void PrintCards();
         public int CountCards();
+        public void ClearCards();
     }
 }
