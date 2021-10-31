@@ -36,7 +36,7 @@ namespace MonsterTradingCardGame
                 {
                     break;
                 }
-                Console.WriteLine($"Round {j}");
+                Console.WriteLine($"          Round {j}");
                 int p1Card = rand.Next(0, BattleDeck1.Count);
                 int p2Card = rand.Next(0, BattleDeck2.Count);
                 int whoWon = Battle.DamageCalc(BattleDeck1[p1Card], BattleDeck2[p2Card]);
@@ -49,6 +49,11 @@ namespace MonsterTradingCardGame
                 {
                     BattleDeck2.Add(BattleDeck1[p1Card]);
                     BattleDeck1.RemoveAt(p1Card);
+                }
+                if(j == 100)
+                {
+                    Console.WriteLine("Round Limit exceeded!");
+                    return;
                 }
                 j++;
             }

@@ -6,94 +6,215 @@ namespace MonsterTradingCardGame
     {
         public static int DamageCalc(ICard Card1, ICard Card2)
         {
-            int DamageFromCard1 = GetCardDamage(Card1, Card2);
-            int DamageFromCard2 = GetCardDamage(Card2, Card1);
-            Console.WriteLine("##############################\n");
+            Console.WriteLine("##############################");
             if ((Card1.MyCardtype == CardType.Monster && Card2.MyCardtype == CardType.Spell) || Card1.MyCardtype == CardType.Spell && Card2.MyCardtype == CardType.Monster)
             {
-                Console.WriteLine("Monster vs Spell Fight");
-                Console.WriteLine($"{Card1.Name} ({Card1.Damage}) vs {Card2.Name} ({Card2.Damage})\n");
-                if (DamageFromCard1 == 2 && DamageFromCard2 == 1)
+                int DmgFromC1 = Card1.Damage;
+                int DmgFromC2 = Card2.Damage;
+                Console.WriteLine("    Monster vs Spell Fight\n");
+                Console.WriteLine($"{Card1.Name} ({DmgFromC1}) vs {Card2.Name} ({DmgFromC2})\n");
+                if (Card1.MyMonsterType == MonsterType.Knight && Card2.MyCardtype == CardType.Spell && Card2.MyElementType == ElementType.Water)
                 {
-                    Console.WriteLine("Player 2 Won!");
+                    Console.WriteLine("The armor of Knights is so heavy that WaterSpells make them drown them instantly!");
+                    Console.WriteLine($"{Card2.Name} defeats {Card1.Name}");
                     PrintLine();
                     return 2;
                 }
-                else if (DamageFromCard1 == 1 && DamageFromCard2 == 2)
+                if (Card2.MyMonsterType == MonsterType.Knight && Card1.MyCardtype == CardType.Spell && Card1.MyElementType == ElementType.Water)
                 {
-                    Console.WriteLine("Player 1 Won!");
+                    Console.WriteLine("The armor of Knights is so heavy that WaterSpells make them drown them instantly!");
+                    Console.WriteLine($"{Card1.Name} defeats {Card2.Name}");
+                    PrintLine();
+                    return 1;
+                }
+                if (Card1.MyMonsterType == MonsterType.Kraken && Card2.MyCardtype == CardType.Spell)
+                {
+                    Console.WriteLine("The Kraken is immune against spells!");
+                    Console.WriteLine($"{Card1.Name} defeats {Card2.Name}");
+                    PrintLine();
+                    return 1;
+                }
+                if (Card2.MyMonsterType == MonsterType.Kraken && Card1.MyCardtype == CardType.Spell)
+                {
+                    Console.WriteLine("The Kraken is immune against spells!");
+                    Console.WriteLine($"{Card2.Name} defeats {Card1.Name}");
+                    PrintLine();
+                    return 2;
+                }
+                if (Card1.MyElementType == ElementType.Grass && Card2.MyElementType == ElementType.Fire)
+                {
+                    DmgFromC1 /= 2;
+                    DmgFromC2 *= 2;
+                }
+                if (Card1.MyElementType == ElementType.Fire && Card2.MyElementType == ElementType.Water)
+                {
+                    DmgFromC1 /= 2;
+                    DmgFromC2 *= 2;
+                }
+                if (Card1.MyElementType == ElementType.Water && Card2.MyElementType == ElementType.Grass)
+                {
+                    DmgFromC1 /= 2;
+                    DmgFromC2 *= 2;
+                }
+                if (Card1.MyElementType == ElementType.Fire && Card2.MyElementType == ElementType.Grass)
+                {
+                    DmgFromC1 *= 2;
+                    DmgFromC2 /= 2;
+                }
+                if (Card1.MyElementType == ElementType.Grass && Card2.MyElementType == ElementType.Water)
+                {
+                    DmgFromC1 *= 2;
+                    DmgFromC2 /= 2;
+                }
+                if (Card1.MyElementType == ElementType.Water && Card2.MyElementType == ElementType.Fire)
+                {
+                    DmgFromC1 *= 2;
+                    DmgFromC2 /= 2;
+                }
+                if (DmgFromC1 < DmgFromC2)
+                {
+                    Console.WriteLine($"\n{Card2.Name} defeats {Card1.Name}");
+                    PrintLine();
+                    return 2;
+                }
+                else if (DmgFromC2 < DmgFromC1)
+                {
+                    Console.WriteLine($"\n{Card1.Name} defeats {Card2.Name}");
                     PrintLine();
                     return 1;
                 }
                 else
                 {
-                    Console.WriteLine("It is a Draw!");
+                    Console.WriteLine("\n       Its a Draw!");
                     PrintLine();
                     return 3;
                 }
             }
             if (Card1.MyCardtype == CardType.Monster && Card2.MyCardtype == CardType.Monster)
             {
-                Console.WriteLine("MonsterFight");
-                Console.WriteLine($"{Card1.Name} ({Card1.Damage}) vs {Card2.Name} ({Card2.Damage})\n");
-                if (DamageFromCard1 == 2 && DamageFromCard2 == 1)
+                int DmgFromC1 = Card1.Damage;
+                int DmgFromC2 = Card2.Damage;
+                Console.WriteLine("        MonsterFight\n");
+                Console.WriteLine($"{Card1.Name} ({DmgFromC1}) vs {Card2.Name} ({DmgFromC2})\n");
+                if (Card1.MyMonsterType == MonsterType.Goblin && Card2.MyMonsterType == MonsterType.Dragon)
                 {
-                    Console.WriteLine("Player 2 Won!");
+                    Console.WriteLine("Goblins are too afraid of Dragons to attack!");
+                    Console.WriteLine($"{Card2.Name} defeats {Card1.Name}");
                     PrintLine();
                     return 2;
                 }
-                else if (DamageFromCard1 == 1 && DamageFromCard2 == 2)
+                if (Card2.MyMonsterType == MonsterType.Goblin && Card1.MyMonsterType == MonsterType.Dragon)
                 {
-                    Console.WriteLine("Player 1 Won!");
+                    Console.WriteLine("Goblins are too afraid of Dragons to attack!");
+                    Console.WriteLine($"{Card1.Name} defeats {Card2.Name}");
+                    PrintLine();
+                    return 1;
+                }
+                if (Card1.MyMonsterType == MonsterType.Ork && Card2.MyMonsterType == MonsterType.Wizzard)
+                {
+                    Console.WriteLine("Wizzard can control Orks so they are not able to damage them!");
+                    Console.WriteLine($"{Card2.Name} defeats {Card1.Name}");
+                    PrintLine();
+                    return 2;
+                }
+                if (Card2.MyMonsterType == MonsterType.Ork && Card1.MyMonsterType == MonsterType.Wizzard)
+                {
+                    Console.WriteLine("Wizzard can control Orks so they are not able to damage them!");
+                    Console.WriteLine($"{Card1.Name} defeats {Card2.Name}");
+                    PrintLine();
+                    return 1;
+                }
+                if (Card1.MyMonsterType == MonsterType.Dragon && Card2.MyMonsterType == MonsterType.Elf)
+                {
+                    Console.WriteLine("The FireElves know Dragons since they were little and can evade their attacks!");
+                    Console.WriteLine($"{Card2.Name} defeats {Card1.Name}");
+                    PrintLine();
+                    return 2;
+                }
+                if (Card2.MyMonsterType == MonsterType.Dragon && Card1.MyMonsterType == MonsterType.Elf)
+                {
+                    Console.WriteLine("The FireElves know Dragons since they were little and can evade their attacks!");
+                    Console.WriteLine($"{Card1.Name} defeats {Card2.Name}");
+                    PrintLine();
+                    return 1;
+                }
+                if (DmgFromC1 < DmgFromC2)
+                {
+                    Console.WriteLine($"\n{Card2.Name} defeats {Card1.Name}");
+                    PrintLine();
+                    return 2;
+                }
+                else if (DmgFromC2 < DmgFromC1)
+                {
+                    Console.WriteLine($"\n{Card1.Name} defeats {Card2.Name}");
                     PrintLine();
                     return 1;
                 }
                 else
                 {
-                    Console.WriteLine("It is a Draw!");
+                    Console.WriteLine("\n       Its a Draw!");
                     PrintLine();
                     return 3;
                 }
             }
             if (Card1.MyCardtype == CardType.Spell && Card2.MyCardtype == CardType.Spell)
             {
-                Console.WriteLine("SpellFight!");
-                Console.WriteLine($"{Card1.Name} ({Card1.Damage}) vs {Card2.Name} ({Card2.Damage})\n");
-                if (DamageFromCard1 == 2 && DamageFromCard2 == 1)
+                int DmgFromC1 = Card1.Damage;
+                int DmgFromC2 = Card2.Damage;
+                Console.WriteLine("         SpellFight!\n");
+                if (Card1.MyElementType == ElementType.Grass && Card2.MyElementType == ElementType.Fire)
                 {
-                    Console.WriteLine("Player 2 Won!");
+                    DmgFromC1 /= 2;
+                    DmgFromC2 *= 2;
+                }
+                if (Card1.MyElementType == ElementType.Fire && Card2.MyElementType == ElementType.Water)
+                {
+                    DmgFromC1 /= 2;
+                    DmgFromC2 *= 2;
+                }
+                if (Card1.MyElementType == ElementType.Water && Card2.MyElementType == ElementType.Grass)
+                {
+                    DmgFromC1 /= 2;
+                    DmgFromC2 *= 2;
+                }
+                if (Card1.MyElementType == ElementType.Fire && Card2.MyElementType == ElementType.Grass)
+                {
+                    DmgFromC1 *= 2;
+                    DmgFromC2 /= 2;
+                }
+                if (Card1.MyElementType == ElementType.Grass && Card2.MyElementType == ElementType.Water)
+                {
+                    DmgFromC1 *= 2;
+                    DmgFromC2 /= 2;
+                }
+                if (Card1.MyElementType == ElementType.Water && Card2.MyElementType == ElementType.Fire)
+                {
+                    DmgFromC1 *= 2;
+                    DmgFromC2 /= 2;
+                }
+                if (DmgFromC1 < DmgFromC2)
+                {
+                    Console.WriteLine($"{Card1.Name} ({DmgFromC1}) vs {Card2.Name} ({DmgFromC2})\n");
+                    Console.WriteLine($"\n{Card2.Name} defeats {Card1.Name}");
                     PrintLine();
                     return 2;
                 }
-                else if (DamageFromCard1 == 1 && DamageFromCard2 == 2)
+                else if (DmgFromC2 < DmgFromC1)
                 {
-                    Console.WriteLine("Player 1 Won!");
+                    Console.WriteLine($"{Card1.Name} ({DmgFromC1}) vs {Card2.Name} ({DmgFromC2})\n");
+                    Console.WriteLine($"\n{Card1.Name} defeats {Card2.Name}");
                     PrintLine();
                     return 1;
                 }
                 else
                 {
-                    Console.WriteLine("It is a Draw!");
+                    Console.WriteLine($"{Card1.Name} ({DmgFromC1}) vs {Card2.Name} ({DmgFromC2})\n");
+                    Console.WriteLine("\n       Its a Draw!");
                     PrintLine();
                     return 3;
                 }
             }
             return -1;
-        }
-        private static int GetCardDamage(ICard card1, ICard card2)
-        {
-            if (card1.Damage > card2.Damage)
-            {
-                return 1;
-            }
-            if (card1.Damage < card2.Damage)
-            {
-                return 2;
-            }
-            else
-            {
-                return 3;
-            }
         }
         private static void PrintLine()
         {
