@@ -7,13 +7,14 @@ namespace MonsterTradingCardGame
     public class Deck : IDeck
     {
         public Dictionary<string, ICard> MyCards;
+        private const int maxCardCount = 4;
         public Deck()
         {
             MyCards = new Dictionary<string, ICard>();
         }
         public int AddCard(ICard Card)
         {
-            if (MyCards.Count < 4)
+            if (MyCards.Count < maxCardCount)
             {
                 MyCards.Add(Card.Name, Card);
                 return 0;

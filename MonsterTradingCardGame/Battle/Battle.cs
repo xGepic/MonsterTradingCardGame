@@ -4,6 +4,7 @@ namespace MonsterTradingCardGame
 {
     class Battle
     {
+        private const int Half = 2;
         public static int DamageCalc(ICard Card1, ICard Card2)
         {
             Console.WriteLine("##############################");
@@ -43,33 +44,33 @@ namespace MonsterTradingCardGame
                 }
                 if (Card1.MyElementType == ElementType.Grass && Card2.MyElementType == ElementType.Fire)
                 {
-                    DmgFromC1 /= 2;
-                    DmgFromC2 *= 2;
+                    DmgFromC1 /= Half;
+                    DmgFromC2 *= Half;
                 }
                 if (Card1.MyElementType == ElementType.Fire && Card2.MyElementType == ElementType.Water)
                 {
-                    DmgFromC1 /= 2;
-                    DmgFromC2 *= 2;
+                    DmgFromC1 /= Half;
+                    DmgFromC2 *= Half;
                 }
                 if (Card1.MyElementType == ElementType.Water && Card2.MyElementType == ElementType.Grass)
                 {
-                    DmgFromC1 /= 2;
-                    DmgFromC2 *= 2;
+                    DmgFromC1 /= Half;
+                    DmgFromC2 *= Half;
                 }
                 if (Card1.MyElementType == ElementType.Fire && Card2.MyElementType == ElementType.Grass)
                 {
-                    DmgFromC1 *= 2;
-                    DmgFromC2 /= 2;
+                    DmgFromC1 *= Half;
+                    DmgFromC2 /= Half;
                 }
                 if (Card1.MyElementType == ElementType.Grass && Card2.MyElementType == ElementType.Water)
                 {
-                    DmgFromC1 *= 2;
-                    DmgFromC2 /= 2;
+                    DmgFromC1 *= Half;
+                    DmgFromC2 /= Half;
                 }
                 if (Card1.MyElementType == ElementType.Water && Card2.MyElementType == ElementType.Fire)
                 {
-                    DmgFromC1 *= 2;
-                    DmgFromC2 /= 2;
+                    DmgFromC1 *= Half;
+                    DmgFromC2 /= Half;
                 }
                 if (DmgFromC1 < DmgFromC2)
                 {
@@ -164,33 +165,33 @@ namespace MonsterTradingCardGame
                 Console.WriteLine("         SpellFight!\n");
                 if (Card1.MyElementType == ElementType.Grass && Card2.MyElementType == ElementType.Fire)
                 {
-                    DmgFromC1 /= 2;
-                    DmgFromC2 *= 2;
+                    DmgFromC1 /= Half;
+                    DmgFromC2 *= Half;
                 }
                 if (Card1.MyElementType == ElementType.Fire && Card2.MyElementType == ElementType.Water)
                 {
-                    DmgFromC1 /= 2;
-                    DmgFromC2 *= 2;
+                    DmgFromC1 /= Half;
+                    DmgFromC2 *= Half;
                 }
                 if (Card1.MyElementType == ElementType.Water && Card2.MyElementType == ElementType.Grass)
                 {
-                    DmgFromC1 /= 2;
-                    DmgFromC2 *= 2;
+                    DmgFromC1 /= Half;
+                    DmgFromC2 *= Half;
                 }
                 if (Card1.MyElementType == ElementType.Fire && Card2.MyElementType == ElementType.Grass)
                 {
-                    DmgFromC1 *= 2;
-                    DmgFromC2 /= 2;
+                    DmgFromC1 *= Half;
+                    DmgFromC2 /= Half;
                 }
                 if (Card1.MyElementType == ElementType.Grass && Card2.MyElementType == ElementType.Water)
                 {
-                    DmgFromC1 *= 2;
-                    DmgFromC2 /= 2;
+                    DmgFromC1 *= Half;
+                    DmgFromC2 /= Half;
                 }
                 if (Card1.MyElementType == ElementType.Water && Card2.MyElementType == ElementType.Fire)
                 {
-                    DmgFromC1 *= 2;
-                    DmgFromC2 /= 2;
+                    DmgFromC1 *= Half;
+                    DmgFromC2 /= Half;
                 }
                 if (DmgFromC1 < DmgFromC2)
                 {

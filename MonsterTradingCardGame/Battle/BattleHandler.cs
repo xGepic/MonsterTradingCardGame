@@ -9,6 +9,10 @@ namespace MonsterTradingCardGame
         private readonly User Player2;
         private readonly List<ICard> BattleDeck1 = new();
         private readonly List<ICard> BattleDeck2 = new();
+        private int roundCounter = 1;
+        private const int player1Won = 1;
+        private const int player2Won = 2;
+        private const int maxRoundCounter = 100;
         public BattleHandler(User User1, User User2)
         {
             Player1 = User1;
@@ -17,7 +21,6 @@ namespace MonsterTradingCardGame
         public void StartBattle()
         {
             Random rand = new();
-            int j = 1;
             int Player1DeckCount = Player1.MyDeck.CountCards();
             int Player2DeckCount = Player2.MyDeck.CountCards();
             for (int i = 0; i < Player1DeckCount; i++)
@@ -36,26 +39,26 @@ namespace MonsterTradingCardGame
                 {
                     break;
                 }
-                Console.WriteLine($"          Round {j}");
+                Console.WriteLine($"          Round {roundCounter}");
                 int p1Card = rand.Next(0, BattleDeck1.Count);
                 int p2Card = rand.Next(0, BattleDeck2.Count);
                 int whoWon = Battle.DamageCalc(BattleDeck1[p1Card], BattleDeck2[p2Card]);
-                if (whoWon == 1)
+                if (whoWon == player1Won)
                 {
                     BattleDeck1.Add(BattleDeck2[p2Card]);
                     BattleDeck2.RemoveAt(p2Card);
                 }
-                if (whoWon == 2)
+                if (whoWon == player2Won)
                 {
                     BattleDeck2.Add(BattleDeck1[p1Card]);
                     BattleDeck1.RemoveAt(p1Card);
                 }
-                if(j == 100)
+                if(roundCounter == maxRoundCounter)
                 {
                     Console.WriteLine("Round Limit exceeded!");
                     return;
                 }
-                j++;
+                roundCounter++;
             }
             if (BattleDeck1.Count == 0)
             {
