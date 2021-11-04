@@ -63,7 +63,7 @@ namespace MonsterTradingCardGame
             }
             else
             {
-                return new SpellCard("WaterSpell", 20, ElementType.Water);
+                return new MonsterCard("WaterElf", 20, ElementType.Water,MonsterType.Elf);
             }
         }
         //provisional Methods

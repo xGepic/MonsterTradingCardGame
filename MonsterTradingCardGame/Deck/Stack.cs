@@ -7,7 +7,7 @@ namespace MonsterTradingCardGame
     public class Stack : IDeck
     {
         public Dictionary<string, ICard> MyStack;
-        private const int maxCardCount = 9;
+        private const int maxCardCount = 10;
         public Stack()
         {
             MyStack = new Dictionary<string, ICard>();
@@ -53,9 +53,11 @@ namespace MonsterTradingCardGame
         }
         public void PrintCards()
         {
+            int counter = 1;
             foreach (var val in MyStack)
             {
-                Console.WriteLine($"{val.Key} Found!");
+                Console.WriteLine($"{counter}. {val.Key}");
+                counter++;
             }
         }
         public int CountCards()
