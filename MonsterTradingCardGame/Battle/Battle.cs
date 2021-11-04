@@ -13,7 +13,7 @@ namespace MonsterTradingCardGame
                 int DmgFromC1 = Card1.Damage;
                 int DmgFromC2 = Card2.Damage;
                 Console.WriteLine("    Monster vs Spell Fight\n");
-                Console.WriteLine($"{Card1.Name} ({DmgFromC1}) vs {Card2.Name} ({DmgFromC2})\n");
+
                 if (Card1.MyMonsterType == MonsterType.Knight && Card2.MyCardtype == CardType.Spell && Card2.MyElementType == ElementType.Water)
                 {
                     Console.WriteLine("The armor of Knights is so heavy that WaterSpells make them drown them instantly!");
@@ -72,6 +72,7 @@ namespace MonsterTradingCardGame
                     DmgFromC1 *= Half;
                     DmgFromC2 /= Half;
                 }
+                Console.WriteLine($"{Card1.Name} ({DmgFromC1}) vs {Card2.Name} ({DmgFromC2})\n");
                 if (DmgFromC1 < DmgFromC2)
                 {
                     Console.WriteLine($"\n{Card2.Name} defeats {Card1.Name}");
