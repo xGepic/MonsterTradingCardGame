@@ -16,6 +16,7 @@ namespace MonsterTradingCardGame
 
                 if (Card1.MyMonsterType == MonsterType.Knight && Card2.MyCardtype == CardType.Spell && Card2.MyElementType == ElementType.Water)
                 {
+                    Console.WriteLine($"{Card1.Name} ({DmgFromC1}) vs {Card2.Name} ({DmgFromC2})\n");
                     Console.WriteLine("The armor of Knights is so heavy that WaterSpells make them drown them instantly!");
                     Console.WriteLine($"{Card2.Name} defeats {Card1.Name}");
                     PrintLine();
@@ -23,6 +24,7 @@ namespace MonsterTradingCardGame
                 }
                 if (Card2.MyMonsterType == MonsterType.Knight && Card1.MyCardtype == CardType.Spell && Card1.MyElementType == ElementType.Water)
                 {
+                    Console.WriteLine($"{Card1.Name} ({DmgFromC1}) vs {Card2.Name} ({DmgFromC2})\n");
                     Console.WriteLine("The armor of Knights is so heavy that WaterSpells make them drown them instantly!");
                     Console.WriteLine($"{Card1.Name} defeats {Card2.Name}");
                     PrintLine();
@@ -30,6 +32,7 @@ namespace MonsterTradingCardGame
                 }
                 if (Card1.MyMonsterType == MonsterType.Kraken && Card2.MyCardtype == CardType.Spell)
                 {
+                    Console.WriteLine($"{Card1.Name} ({DmgFromC1}) vs {Card2.Name} ({DmgFromC2})\n");
                     Console.WriteLine("The Kraken is immune against spells!");
                     Console.WriteLine($"{Card1.Name} defeats {Card2.Name}");
                     PrintLine();
@@ -37,6 +40,7 @@ namespace MonsterTradingCardGame
                 }
                 if (Card2.MyMonsterType == MonsterType.Kraken && Card1.MyCardtype == CardType.Spell)
                 {
+                    Console.WriteLine($"{Card1.Name} ({DmgFromC1}) vs {Card2.Name} ({DmgFromC2})\n");
                     Console.WriteLine("The Kraken is immune against spells!");
                     Console.WriteLine($"{Card2.Name} defeats {Card1.Name}");
                     PrintLine();
