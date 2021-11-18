@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security;
 
 namespace MonsterTradingCardGame
 {
@@ -8,7 +9,41 @@ namespace MonsterTradingCardGame
         {
             Console.WriteLine("Monster Trading Card Game by Stefan Simanek\n\n");
         }
-
+        public static void PrintLogIn()
+        {
+            string username;
+            SecureString pwd;
+            Console.WriteLine("Username: ");
+            username = Console.ReadLine();
+            Console.WriteLine("Password: ");
+            pwd = GetPassword();
+        }
+        public static SecureString GetPassword()
+        {
+            var pwd = new SecureString();
+            while (true)
+            {
+                ConsoleKeyInfo i = Console.ReadKey(true);
+                if (i.Key == ConsoleKey.Enter)
+                {
+                    break;
+                }
+                else if (i.Key == ConsoleKey.Backspace)
+                {
+                    if (pwd.Length > 0)
+                    {
+                        pwd.RemoveAt(pwd.Length - 1);
+                        Console.Write("\b \b");
+                    }
+                }
+                else if (i.KeyChar != '\u0000')
+                {
+                    pwd.AppendChar(i.KeyChar);
+                    Console.Write("*");
+                }
+            }
+            return pwd;
+        }
 
 
         //provisional Methods

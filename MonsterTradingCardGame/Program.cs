@@ -1,10 +1,16 @@
-﻿namespace MonsterTradingCardGame
+﻿using System.Threading;
+
+namespace MonsterTradingCardGame
 {
     class Program
     {
         static void Main()
         {
             Menu.PrintStartingMenu();
+            Menu.PrintLogIn();
+
+            Thread.Sleep(10000);
+
             User Player1 = Menu.GetUser1();
             User Player2 = Menu.GetUser2();
 
