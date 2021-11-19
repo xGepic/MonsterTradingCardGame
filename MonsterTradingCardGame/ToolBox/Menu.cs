@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Security;
 
 namespace MonsterTradingCardGame
 {
@@ -12,15 +11,16 @@ namespace MonsterTradingCardGame
         public static void PrintLogIn()
         {
             string username;
-            SecureString pwd;
-            Console.WriteLine("Username: ");
+            string pwd;
+            Console.Write("Username: ");
             username = Console.ReadLine();
-            Console.WriteLine("Password: ");
+            Console.Write("Password: ");
             pwd = GetPassword();
+            //Database
         }
-        public static SecureString GetPassword()
+        public static String GetPassword()
         {
-            var pwd = new SecureString();
+            string pwd = "";
             while (true)
             {
                 ConsoleKeyInfo i = Console.ReadKey(true);
@@ -32,18 +32,19 @@ namespace MonsterTradingCardGame
                 {
                     if (pwd.Length > 0)
                     {
-                        pwd.RemoveAt(pwd.Length - 1);
+                        pwd.Remove(pwd.Length - 1);
                         Console.Write("\b \b");
                     }
                 }
                 else if (i.KeyChar != '\u0000')
                 {
-                    pwd.AppendChar(i.KeyChar);
+                    pwd += (i.KeyChar);
                     Console.Write("*");
                 }
             }
             return pwd;
         }
+
 
 
         //provisional Methods
@@ -98,7 +99,7 @@ namespace MonsterTradingCardGame
             }
             else
             {
-                return new MonsterCard("WaterElf", 20, ElementType.Water,MonsterType.Elf);
+                return new MonsterCard("WaterElf", 20, ElementType.Water, MonsterType.Elf);
             }
         }
         //provisional Methods
