@@ -12,10 +12,11 @@ namespace MonsterTradingCardGame
         {
             string username;
             string pwd;
-            Console.Write("Username: ");
+            Console.WriteLine("Username: ");
             username = Console.ReadLine();
-            Console.Write("Password: ");
+            Console.WriteLine("Password: ");
             pwd = GetPassword();
+            Console.WriteLine($"\n{username} logged in with password: {pwd}");
             //Database
         }
         public static String GetPassword()
@@ -32,7 +33,7 @@ namespace MonsterTradingCardGame
                 {
                     if (pwd.Length > 0)
                     {
-                        pwd.Remove(pwd.Length - 1);
+                        pwd = pwd.Remove(pwd.Length - 1);
                         Console.Write("\b \b");
                     }
                 }
