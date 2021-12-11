@@ -53,7 +53,7 @@ namespace MonsterTradingCardGame
                     BattleDeck2.Add(BattleDeck1[p1Card]);
                     BattleDeck1.RemoveAt(p1Card);
                 }
-                if(roundCounter == maxRoundCounter)
+                if (roundCounter == maxRoundCounter)
                 {
                     Console.WriteLine("Round Limit exceeded!");
                     return;
@@ -76,6 +76,28 @@ namespace MonsterTradingCardGame
                     Player1.MyStack.AddCard(BattleDeck1[i]);
                 }
             }
+        }
+        public static float Probability(float rating1, float rating2)
+        {
+            return 1.0f * 1.0f / (1 + 1.0f * (float)(Math.Pow(10, 1.0f * (rating1 - rating2) / 400)));
+        }
+        public static float EloRating1(float Ra, float Rb)
+        {
+            int kValue = 30;
+            float Pb = Probability(Ra, Rb);
+            float Pa = Probability(Rb, Ra);
+            Ra += kValue * (1 - Pa);
+            Rb += kValue * (0 - Pb);
+            return Ra;
+        }
+        public static float EloRating2(float Ra, float Rb)
+        {
+            int kValue = 30;
+            float Pb = Probability(Ra, Rb);
+            float Pa = Probability(Rb, Ra);
+            Ra += kValue * (0 - Pa);
+            Rb += kValue * (1 - Pb);
+            return Rb;
         }
     }
 }
