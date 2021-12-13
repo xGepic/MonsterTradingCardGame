@@ -81,23 +81,25 @@ namespace MonsterTradingCardGame
         {
             return 1.0f * 1.0f / (1 + 1.0f * (float)(Math.Pow(10, 1.0f * (rating1 - rating2) / 400)));
         }
-        public static float EloRating1(float Ra, float Rb)
+        public static void EloRating(float Ra, float Rb, int whoWon)
         {
-            int kValue = 30;
+            int K = 5;
             float Pb = Probability(Ra, Rb);
             float Pa = Probability(Rb, Ra);
-            Ra += kValue * (1 - Pa);
-            Rb += kValue * (0 - Pb);
-            return Ra;
-        }
-        public static float EloRating2(float Ra, float Rb)
-        {
-            int kValue = 30;
-            float Pb = Probability(Ra, Rb);
-            float Pa = Probability(Rb, Ra);
-            Ra += kValue * (0 - Pa);
-            Rb += kValue * (1 - Pb);
-            return Rb;
+
+            //A wins
+            if (whoWon == 1)
+            {
+                Ra += K * (1 - Pa);
+                Rb += K * (0 - Pb);
+            }
+            //B Wins
+            if (whoWon == 2)
+            {
+                Ra += K * (0 - Pa);
+                Rb += K * (1 - Pb);
+            }
+            //To do
         }
     }
 }
