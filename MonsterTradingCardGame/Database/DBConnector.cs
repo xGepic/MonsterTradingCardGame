@@ -1,18 +1,23 @@
-﻿using System;
-using System.IO;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using Npgsql;
 
 namespace MonsterTradingCardGame.Database
 {
     class DBConnector
     {
-        public DBConnector()
+        private static DBConnector DatabaseInstance = new DBConnector();
+        private static NpgsqlConnection connection = new NpgsqlConnection("Server=localhost; User Id=postgres; Password=asdf; Database=postgres;");
+        private DBConnector()
         {
 
+        }
+        public static DBConnector GetInstance()
+        {
+            return DatabaseInstance;
+        }
+        public int Open()
+        {
+            connection.Open();
+            return 0;
         }
     }
 }
