@@ -4,26 +4,18 @@ namespace MonsterTradingCardGame
 {
     class User
     {
-        private const int StartingCoins = 20;
-        private const int StartingElo = 100;
         private readonly string Username;
         private readonly string Password;
-        public Deck MyDeck = new();
-        public Stack MyStack = new();
-        public int Wins { get; set; }
-        public int Loses { get; set; }
+        public Deck MyDeck;
+        public Stack MyStack;
         public int Coins { get; set; }
         public int Elo { get; set; }
-        public string Token { get; set; }
-        public User(string myUsername, string myPassword)
+        public User(string myUsername, Stack userStack, int eloPoints, int coins)
         {
             Username = myUsername;
-            Password = myPassword;
-            Wins = 0;
-            Loses = 0;
-            Coins = StartingCoins;
-            Elo = StartingElo;
-            Token = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+            MyStack = userStack;
+            Coins = coins;
+            Elo = eloPoints;
         }
     }
 }
