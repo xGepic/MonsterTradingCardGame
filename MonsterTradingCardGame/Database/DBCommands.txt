@@ -1,0 +1,18 @@
+﻿        public User GetUser(string username)
+        {
+            Open();
+            int posOfEloInDbResponse = 0;
+            int posOfCoinsInDbResponse = 1;
+            Stack userCardStack = GetPlayerStack(username);
+            NpgsqlCommand command = new("SELECT elo, coins FROM player WHERE username = @username", connection);
+            command.Parameters.AddWithValue("username", username);
+            NpgsqlDataReader dataReader = command.ExecuteReader();
+            dataReader.Read();
+            int eloPoints = (int)dataReader[posOfEloInDbResponse];
+            int coins = (int)dataReader[posOfCoinsInDbResponse];
+            Close();
+            User myUser = new(username, userCardStack, eloPoints, coins);
+            return myUser;
+        }
+
+//to do
