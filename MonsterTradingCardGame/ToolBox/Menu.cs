@@ -82,11 +82,17 @@ namespace MonsterTradingCardGame
                 }
             } while (pwd1 != pwd2);
 
-            //database
-
-            Console.WriteLine("\nSignup Successful! - You will be taken to the Menu in 3 Seconds!");
-            Thread.Sleep(3000);
-            Console.Clear();
+            DBConnector myDB = DBConnector.GetInstance();
+            if (myDB.RegisterUser(username, pwd1, 100, 20))
+            {
+                Console.WriteLine("\nSignup Successful! - You will be taken to the Menu in 3 Seconds!");
+                Thread.Sleep(3000);
+                Console.Clear();
+            }
+            else
+            {
+                Console.WriteLine("\nFail!");
+            }
         }
         public static String GetPassword()
         {

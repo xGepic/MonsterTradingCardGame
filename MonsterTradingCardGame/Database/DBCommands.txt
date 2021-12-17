@@ -1,7 +1,1 @@
-﻿CREATE TABLE player(
-username	varchar(20) PRIMARY KEY,
-password	text		NOT NULL,
-ELO			int			NOT NULL,
-coins		int			NOT NULL,
-salt		bytea		NOT NULL,
-);
+﻿CREATE TABLE player(username varchar(20) PRIMARY KEY,password text NOT NULL, ELO int NOT NULL,coins int	NOT NULL,salt bytea	NOT NULL);

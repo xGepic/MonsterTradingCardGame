@@ -3,9 +3,9 @@ using Npgsql;
 using System;
 using System.Security.Cryptography;
 
-namespace MonsterTradingCardGame.Database
+namespace MonsterTradingCardGame
 {
-    class DBConnector
+    public class DBConnector
     {
         private readonly static DBConnector DatabaseInstance = new();
         private readonly static NpgsqlConnection connection = new("Server=localhost; User Id=postgres; Password=asdf; Database=postgres;");
@@ -25,7 +25,7 @@ namespace MonsterTradingCardGame.Database
         {
             connection.Close();
         }
-        public static bool RegisterUser(string username, string password, int eloPoints, int coins)
+        public bool RegisterUser(string username, string password, int eloPoints, int coins)
         {
             Open();
             RNGCryptoServiceProvider provider = new();
@@ -58,7 +58,7 @@ namespace MonsterTradingCardGame.Database
             Close();
             return false;
         }
-        public static bool LogInUser(string username, string password)
+        public bool LogInUser(string username, string password)
         {
             Open();
             NpgsqlCommand saltCommand = new("SELECT salt FROM player WHERE username = @name;", connection);
