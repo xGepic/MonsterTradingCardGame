@@ -12,9 +12,7 @@ namespace MonsterTradingCardGame
                 int getMenu = Menu.PrintStartingMenu();
                 if (getMenu == 1)
                 {
-                    string getLogIn = Menu.PrintLogIn();
-                    Menu.LoggedInUser(getLogIn);
-                    return;
+                    Menu.PrintLogIn();
                 }
                 else if(getMenu == 2)
                 {

@@ -29,14 +29,14 @@ namespace MonsterTradingCardGame
         {
             Open();
             RNGCryptoServiceProvider provider = new();
-            byte[] salt = new byte[24];
-            provider.GetBytes(salt);
-            byte[] hashed = (KeyDerivation.Pbkdf2(
+            byte[] mySalt = new byte[128 / 8];
+            provider.GetBytes(mySalt);
+            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
               password: password,
-              salt: (byte[])salt,
+              salt: mySalt,
               prf: KeyDerivationPrf.HMACSHA256,
               iterationCount: 100000,
-              numBytesRequested: 24));
+              numBytesRequested: 256 / 8));
             NpgsqlCommand command1 = new("SELECT username FROM player WHERE username = @name", connection);
             command1.Parameters.AddWithValue("name", username);
             command1.ExecuteScalar();
@@ -50,7 +50,7 @@ namespace MonsterTradingCardGame
                 insertCommand.Parameters.AddWithValue("password", hashed);
                 insertCommand.Parameters.AddWithValue("elo", eloPoints);
                 insertCommand.Parameters.AddWithValue("coins", coins);
-                insertCommand.Parameters.AddWithValue("salt", salt);
+                insertCommand.Parameters.AddWithValue("salt", mySalt);
                 insertCommand.ExecuteReader();
                 Close();
                 return true;
@@ -69,13 +69,14 @@ namespace MonsterTradingCardGame
                 NpgsqlCommand passwordCommand = new("SELECT password FROM player WHERE username = @name;", connection);
                 passwordCommand.Parameters.AddWithValue("name", username);
                 Object passwordInDB = passwordCommand.ExecuteScalar();
-
                 string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
                     password: password,
                     salt: (byte[])salt,
                     prf: KeyDerivationPrf.HMACSHA256,
                     iterationCount: 100000,
-                    numBytesRequested: 24));
+                    numBytesRequested: 256 / 8));
+                Console.WriteLine(hashed);
+                Console.WriteLine(passwordInDB);
                 if (hashed == (string)passwordInDB)
                 {
                     Close();

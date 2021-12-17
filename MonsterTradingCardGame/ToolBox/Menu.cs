@@ -34,11 +34,10 @@ namespace MonsterTradingCardGame
                 return 0;
             }
         }
-        public static string PrintLogIn()
+        public static void PrintLogIn()
         {
             string username;
             string pwd;
-            bool success = true;
             Console.Clear();
             Console.WriteLine("--| LOGIN |--\n");
             Console.WriteLine("Username: ");
@@ -46,19 +45,18 @@ namespace MonsterTradingCardGame
             Console.WriteLine("Password: ");
             pwd = GetPassword();
 
-            //Database
-
-            if (success)
+            DBConnector myDB = DBConnector.GetInstance();
+            if (myDB.LogInUser(username, pwd))
             {
                 Console.WriteLine("\n\nSuccess! - You will be taken to the Menu in 3 Seconds!");
                 Thread.Sleep(3000);
                 Console.Clear();
-                return username;
+                LoggedInUser(username);
             }
             else
             {
                 Console.WriteLine("\n[Error] Invalid Credentials!\n");
-                return " ";
+                return;
             }
         }
         public static void PrintSignUp()
@@ -138,7 +136,7 @@ namespace MonsterTradingCardGame
             try
             {
                 i = Convert.ToInt32(Console.ReadLine());
-                if (i < 1 || i > 5)
+                if (i < 1 || i > 7)
                 {
                     throw new ArgumentException("Invalid Input");
                 }
