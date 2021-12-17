@@ -20,6 +20,7 @@ namespace MonsterTradingCardGame
                 }
                 else if (getMenu == 3)
                 {
+                    Console.Clear();
                     Console.WriteLine("GoodBye!");
                     return;
                 }

@@ -89,7 +89,7 @@ namespace MonsterTradingCardGame
             }
             else
             {
-                Console.WriteLine("\nFail!");
+                Console.WriteLine("\nSignup Failed!");
             }
         }
         public static String GetPassword()
@@ -128,7 +128,7 @@ namespace MonsterTradingCardGame
             Console.WriteLine("4 - View the Leaderboard");
             Console.WriteLine("5 - View your Profile");
             Console.WriteLine("6 - Trade");
-            Console.WriteLine("7 - QUIT");
+            Console.WriteLine("7 - LOGOUT");
         }
         public static int GetUserMenuInput()
         {
@@ -186,6 +186,7 @@ namespace MonsterTradingCardGame
                 }
                 if (i == 7)
                 {
+                    Console.Clear();
                     return;
                 }
             }

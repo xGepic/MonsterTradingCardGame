@@ -68,16 +68,14 @@ namespace MonsterTradingCardGame
             {
                 NpgsqlCommand passwordCommand = new("SELECT password FROM player WHERE username = @name;", connection);
                 passwordCommand.Parameters.AddWithValue("name", username);
-                Object passwordInDB = passwordCommand.ExecuteScalar();
+                string passwordInDB = (string)passwordCommand.ExecuteScalar();
                 string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
                     password: password,
                     salt: (byte[])salt,
                     prf: KeyDerivationPrf.HMACSHA256,
                     iterationCount: 100000,
                     numBytesRequested: 256 / 8));
-                Console.WriteLine(hashed);
-                Console.WriteLine(passwordInDB);
-                if (hashed == (string)passwordInDB)
+                if (hashed == passwordInDB)
                 {
                     Close();
                     return true;
