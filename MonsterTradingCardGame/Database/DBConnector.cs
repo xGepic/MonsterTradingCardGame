@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using Npgsql;
 using System;
 using System.Security.Cryptography;
 
@@ -26,43 +27,65 @@ namespace MonsterTradingCardGame.Database
             connection.Close();
             return 0;
         }
-        public bool RegisterUser(string username, string password, int eloPoints, int coins)
+        public static bool RegisterUser(string username, string password, int eloPoints, int coins)
         {
             Open();
             RNGCryptoServiceProvider provider = new();
             byte[] salt = new byte[24];
             provider.GetBytes(salt);
-
-            Rfc2898DeriveBytes pbkdf2 = new(password, salt, 100000);
-
-            NpgsqlCommand cmd = new("SELECT username FROM player WHERE username = @name", connection);
-            cmd.Parameters.AddWithValue("name", username);
-            Object response = cmd.ExecuteScalar();
-
-            //to do
-
+            byte[] hashed = (KeyDerivation.Pbkdf2(
+              password: password,
+              salt: (byte[])salt,
+              prf: KeyDerivationPrf.HMACSHA256,
+              iterationCount: 100000,
+              numBytesRequested: 24));
+            NpgsqlCommand command1 = new("SELECT username FROM player WHERE username = @name", connection);
+            command1.Parameters.AddWithValue("name", username);
+            command1.ExecuteScalar();
+            NpgsqlCommand command2 = new("SELECT username FROM player WHERE username = @name", connection);
+            command2.Parameters.AddWithValue("name", username);
+            Object response2 = command2.ExecuteScalar();
+            if (response2 == null)
+            {
+                NpgsqlCommand insertCommand = new("INSERT INTO player (username, password, elo, coins, salt) VALUES (@name, @password, @elo, @coins, @salt);", connection);
+                insertCommand.Parameters.AddWithValue("name", username);
+                insertCommand.Parameters.AddWithValue("password", hashed);
+                insertCommand.Parameters.AddWithValue("elo", eloPoints);
+                insertCommand.Parameters.AddWithValue("coins", coins);
+                insertCommand.Parameters.AddWithValue("salt", salt);
+                insertCommand.ExecuteReader();
+                Close();
+                return true;
+            }
             Close();
-            return true;
+            return false;
         }
-        public User GetUser(string username)
+        public static bool LogInUser(string username, string password)
         {
-            int posOfEloInDbResponse = 0;
-            int posOfCoinsInDbResponse = 1;
-            Stack userCardStack = GetPlayerStack(username);
-            NpgsqlCommand command = new("SELECT elo, coins FROM player WHERE username = @username", connection);
-            command.Parameters.AddWithValue("username", username);
-            NpgsqlDataReader dataReader = command.ExecuteReader();
-            dataReader.Read();
-            int eloPoints = (int)dataReader[posOfEloInDbResponse];
-            int coins = (int)dataReader[posOfCoinsInDbResponse];
+            Open();
+            NpgsqlCommand saltCommand = new("SELECT salt FROM player WHERE username = @name;", connection);
+            saltCommand.Parameters.AddWithValue("name", username);
+            Object salt = saltCommand.ExecuteScalar();
+            if (salt != null)
+            {
+                NpgsqlCommand passwordCommand = new("SELECT password FROM player WHERE username = @name;", connection);
+                passwordCommand.Parameters.AddWithValue("name", username);
+                Object passwordInDB = passwordCommand.ExecuteScalar();
+
+                string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                    password: password,
+                    salt: (byte[])salt,
+                    prf: KeyDerivationPrf.HMACSHA256,
+                    iterationCount: 100000,
+                    numBytesRequested: 24));
+                if (hashed == (string)passwordInDB)
+                {
+                    Close();
+                    return true;
+                }
+            }
             Close();
-            User myUser = new(username, userCardStack, eloPoints, coins);
-            return myUser;
-        }
-        public Stack GetPlayerStack(string username)
-        {
-            //to do
-            return new Stack();
+            return false;
         }
     }
 }
