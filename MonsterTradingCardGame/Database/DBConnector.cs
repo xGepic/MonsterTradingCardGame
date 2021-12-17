@@ -17,15 +17,13 @@ namespace MonsterTradingCardGame.Database
         {
             return DatabaseInstance;
         }
-        public static int Open()
+        public static void Open()
         {
             connection.Open();
-            return 0;
         }
-        public static int Close()
+        public static void Close()
         {
             connection.Close();
-            return 0;
         }
         public static bool RegisterUser(string username, string password, int eloPoints, int coins)
         {
