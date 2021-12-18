@@ -13,6 +13,7 @@ namespace MonsterTradingCardGame
         private const int player1Won = 1;
         private const int player2Won = 2;
         private const int maxRoundCounter = 100;
+        private const int kValue = 30;
         public BattleHandler(User User1, User User2)
         {
             Player1 = User1;
@@ -67,6 +68,11 @@ namespace MonsterTradingCardGame
                 {
                     Player2.MyStack.AddCard(BattleDeck2[i]);
                 }
+                //Elo Calculation
+                float probablilityPlayer1 = Probability(Player1.Elo, Player2.Elo);
+                float probablilityPlayer2 = Probability(Player2.Elo, Player1.Elo);
+                Player1.Elo += (int)Math.Round(kValue * (0 - probablilityPlayer1));
+                Player2.Elo += (int)Math.Round(kValue * (1 - probablilityPlayer2));
             }
             if (BattleDeck2.Count == 0)
             {
@@ -75,31 +81,17 @@ namespace MonsterTradingCardGame
                 {
                     Player1.MyStack.AddCard(BattleDeck1[i]);
                 }
+                //Elo Calculation
+                float probablilityPlayer1 = Probability(Player1.Elo, Player2.Elo);
+                float probablilityPlayer2 = Probability(Player2.Elo, Player1.Elo);
+                Player1.Elo += (int)Math.Round(kValue * (1 - probablilityPlayer1));
+                Player2.Elo += (int)Math.Round(kValue * (0 - probablilityPlayer2));
             }
         }
         public static float Probability(float rating1, float rating2)
         {
+            //This returns the Winning Probability of rating2
             return 1.0f * 1.0f / (1 + 1.0f * (float)(Math.Pow(10, 1.0f * (rating1 - rating2) / 400)));
-        }
-        public static void EloRating(float Ra, float Rb, int whoWon)
-        {
-            int K = 5;
-            float Pb = Probability(Ra, Rb);
-            float Pa = Probability(Rb, Ra);
-
-            //A wins
-            if (whoWon == 1)
-            {
-                Ra += K * (1 - Pa);
-                Rb += K * (0 - Pb);
-            }
-            //B Wins
-            if (whoWon == 2)
-            {
-                Ra += K * (0 - Pa);
-                Rb += K * (1 - Pb);
-            }
-            //To do
         }
     }
 }

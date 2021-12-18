@@ -81,7 +81,7 @@ namespace MonsterTradingCardGame
             } while (pwd1 != pwd2);
 
             DBConnector myDB = DBConnector.GetInstance();
-            if (myDB.RegisterUser(username, pwd1, 100, 20))
+            if (myDB.RegisterUser(username, pwd1, 1000, 20))
             {
                 Console.WriteLine("\nSignup Successful! - You will be taken to the Menu in 3 Seconds!");
                 Thread.Sleep(3000);
