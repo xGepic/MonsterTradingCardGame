@@ -5,23 +5,25 @@ namespace MonsterTradingCardGame
 {
     static class Menu
     {
+        private const int startingElo = 1000;
+        private const int startingCoins = 20;
         public static int PrintStartingMenu()
         {
-            int i;
+            int input;
             Console.WriteLine("What would you like to do?:");
             Console.WriteLine("1 - LOGIN");
             Console.WriteLine("2 - SIGNUP");
             Console.WriteLine("3 - QUIT");
             try
             {
-                i = Convert.ToInt32(Console.ReadLine());
-                if (i != 1 && i != 2 && i != 3)
+                input = Convert.ToInt32(Console.ReadLine());
+                if (input != 1 && input != 2 && input != 3)
                 {
                     throw new ArgumentException("Invalid Input");
                 }
                 else
                 {
-                    return i;
+                    return input;
                 }
             }
             catch (Exception e)
@@ -47,7 +49,7 @@ namespace MonsterTradingCardGame
                 Console.WriteLine("\n\nSuccess! - You will be taken to the Menu in 3 Seconds!");
                 Thread.Sleep(3000);
                 Console.Clear();
-                LoggedInUser(username);
+                LoggedInUser.LoggedInMenu(username);
             }
             else
             {
@@ -77,7 +79,7 @@ namespace MonsterTradingCardGame
             } while (pwd1 != pwd2);
 
             DBConnector myDB = DBConnector.GetInstance();
-            if (myDB.RegisterUser(username, pwd1, 1000, 20))
+            if (myDB.RegisterUser(username, pwd1, startingElo, startingCoins))
             {
                 Console.WriteLine("\nSignup Successful! - You will be taken to the Menu in 3 Seconds!");
                 Thread.Sleep(3000);
@@ -88,66 +90,6 @@ namespace MonsterTradingCardGame
                 Console.WriteLine("\nSignup Failed!");
             }
         }
-        public static int GetUserMenuInput()
-        {
-            int i;
-            try
-            {
-                i = Convert.ToInt32(Console.ReadLine());
-                if (i < 1 || i > 7)
-                {
-                    throw new ArgumentException("Invalid Input");
-                }
-                else
-                {
-                    return i;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("\n[Error] " + e.Message + "\n\n");
-                return 0;
-            }
-        }
-        public static void LoggedInUser(string userName)
-        {
-            while (true)
-            {
-                UI.PrintUserMenu(userName);
-                int i = GetUserMenuInput();
 
-                //to do
-
-                if (i == 1)
-                {
-                    Console.WriteLine("Play");
-                }
-                if (i == 2)
-                {
-                    Console.WriteLine("Buy a Package");
-                }
-                if (i == 3)
-                {
-                    Console.WriteLine("Craft your Deck");
-                }
-                if (i == 4)
-                {
-                    Console.WriteLine("View the Leaderboard");
-                }
-                if (i == 5)
-                {
-                    Console.WriteLine("View your Profile");
-                }
-                if (i == 6)
-                {
-                    Console.WriteLine("Trade");
-                }
-                if (i == 7)
-                {
-                    Console.Clear();
-                    return;
-                }
-            }
-        }
     }
 }

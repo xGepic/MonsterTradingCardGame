@@ -68,7 +68,6 @@ namespace MonsterTradingCardGame
                 {
                     Player2.MyStack.AddCard(BattleDeck2[i]);
                 }
-                //Elo Calculation
                 float probablilityPlayer1 = Probability(Player1.Elo, Player2.Elo);
                 float probablilityPlayer2 = Probability(Player2.Elo, Player1.Elo);
                 Player1.Elo += (int)Math.Round(kValue * (0 - probablilityPlayer1));
@@ -81,7 +80,6 @@ namespace MonsterTradingCardGame
                 {
                     Player1.MyStack.AddCard(BattleDeck1[i]);
                 }
-                //Elo Calculation
                 float probablilityPlayer1 = Probability(Player1.Elo, Player2.Elo);
                 float probablilityPlayer2 = Probability(Player2.Elo, Player1.Elo);
                 Player1.Elo += (int)Math.Round(kValue * (1 - probablilityPlayer1));

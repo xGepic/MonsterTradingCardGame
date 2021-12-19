@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MonsterTradingCardGame
 {
@@ -23,6 +19,27 @@ namespace MonsterTradingCardGame
             Console.WriteLine("5 - View your Profile");
             Console.WriteLine("6 - Trade");
             Console.WriteLine("7 - LOGOUT");
+        }
+        public static int GetUserMenuInput()
+        {
+            int input;
+            try
+            {
+                input = Convert.ToInt32(Console.ReadLine());
+                if (input < 1 || input > 7)
+                {
+                    throw new ArgumentException("Invalid Input");
+                }
+                else
+                {
+                    return input;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("\n[Error] " + e.Message + "\n\n");
+                return 0;
+            }
         }
     }
 }

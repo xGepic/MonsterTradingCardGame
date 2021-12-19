@@ -4,7 +4,7 @@ namespace MonsterTradingCardGame
 {
     class Battle
     {
-        private const int Half = 2;
+        private const int HalfOrDouble = 2;
         public static int DamageCalc(ICard Card1, ICard Card2)
         {
             Console.WriteLine("##############################");
@@ -48,33 +48,33 @@ namespace MonsterTradingCardGame
                 }
                 if (Card1.MyElementType == ElementType.Grass && Card2.MyElementType == ElementType.Fire)
                 {
-                    DmgFromC1 /= Half;
-                    DmgFromC2 *= Half;
+                    DmgFromC1 /= HalfOrDouble;
+                    DmgFromC2 *= HalfOrDouble;
                 }
                 if (Card1.MyElementType == ElementType.Fire && Card2.MyElementType == ElementType.Water)
                 {
-                    DmgFromC1 /= Half;
-                    DmgFromC2 *= Half;
+                    DmgFromC1 /= HalfOrDouble;
+                    DmgFromC2 *= HalfOrDouble;
                 }
                 if (Card1.MyElementType == ElementType.Water && Card2.MyElementType == ElementType.Grass)
                 {
-                    DmgFromC1 /= Half;
-                    DmgFromC2 *= Half;
+                    DmgFromC1 /= HalfOrDouble;
+                    DmgFromC2 *= HalfOrDouble;
                 }
                 if (Card1.MyElementType == ElementType.Fire && Card2.MyElementType == ElementType.Grass)
                 {
-                    DmgFromC1 *= Half;
-                    DmgFromC2 /= Half;
+                    DmgFromC1 *= HalfOrDouble;
+                    DmgFromC2 /= HalfOrDouble;
                 }
                 if (Card1.MyElementType == ElementType.Grass && Card2.MyElementType == ElementType.Water)
                 {
-                    DmgFromC1 *= Half;
-                    DmgFromC2 /= Half;
+                    DmgFromC1 *= HalfOrDouble;
+                    DmgFromC2 /= HalfOrDouble;
                 }
                 if (Card1.MyElementType == ElementType.Water && Card2.MyElementType == ElementType.Fire)
                 {
-                    DmgFromC1 *= Half;
-                    DmgFromC2 /= Half;
+                    DmgFromC1 *= HalfOrDouble;
+                    DmgFromC2 /= HalfOrDouble;
                 }
                 Console.WriteLine($"{Card1.Name} ({DmgFromC1}) vs {Card2.Name} ({DmgFromC2})\n");
                 if (DmgFromC1 < DmgFromC2)
@@ -170,33 +170,33 @@ namespace MonsterTradingCardGame
                 Console.WriteLine("         SpellFight!\n");
                 if (Card1.MyElementType == ElementType.Grass && Card2.MyElementType == ElementType.Fire)
                 {
-                    DmgFromC1 /= Half;
-                    DmgFromC2 *= Half;
+                    DmgFromC1 /= HalfOrDouble;
+                    DmgFromC2 *= HalfOrDouble;
                 }
                 if (Card1.MyElementType == ElementType.Fire && Card2.MyElementType == ElementType.Water)
                 {
-                    DmgFromC1 /= Half;
-                    DmgFromC2 *= Half;
+                    DmgFromC1 /= HalfOrDouble;
+                    DmgFromC2 *= HalfOrDouble;
                 }
                 if (Card1.MyElementType == ElementType.Water && Card2.MyElementType == ElementType.Grass)
                 {
-                    DmgFromC1 /= Half;
-                    DmgFromC2 *= Half;
+                    DmgFromC1 /= HalfOrDouble;
+                    DmgFromC2 *= HalfOrDouble;
                 }
                 if (Card1.MyElementType == ElementType.Fire && Card2.MyElementType == ElementType.Grass)
                 {
-                    DmgFromC1 *= Half;
-                    DmgFromC2 /= Half;
+                    DmgFromC1 *= HalfOrDouble;
+                    DmgFromC2 /= HalfOrDouble;
                 }
                 if (Card1.MyElementType == ElementType.Grass && Card2.MyElementType == ElementType.Water)
                 {
-                    DmgFromC1 *= Half;
-                    DmgFromC2 /= Half;
+                    DmgFromC1 *= HalfOrDouble;
+                    DmgFromC2 /= HalfOrDouble;
                 }
                 if (Card1.MyElementType == ElementType.Water && Card2.MyElementType == ElementType.Fire)
                 {
-                    DmgFromC1 *= Half;
-                    DmgFromC2 /= Half;
+                    DmgFromC1 *= HalfOrDouble;
+                    DmgFromC2 /= HalfOrDouble;
                 }
                 if (DmgFromC1 < DmgFromC2)
                 {
