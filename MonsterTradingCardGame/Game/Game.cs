@@ -8,7 +8,7 @@ namespace MonsterTradingCardGame
         {
             while (true)
             {
-                Menu.PrintWelcomeMessage();
+                UI.PrintWelcomeMessage();
                 int getMenu = Menu.PrintStartingMenu();
                 if (getMenu == 1)
                 {

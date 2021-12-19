@@ -5,10 +5,6 @@ namespace MonsterTradingCardGame
 {
     static class Menu
     {
-        public static void PrintWelcomeMessage()
-        {
-            Console.WriteLine("Monster Trading Card Game by Stefan Simanek\n\n");
-        }
         public static int PrintStartingMenu()
         {
             int i;
@@ -43,7 +39,7 @@ namespace MonsterTradingCardGame
             Console.WriteLine("Username: ");
             username = Console.ReadLine();
             Console.WriteLine("Password: ");
-            pwd = GetPassword();
+            pwd = User.GetPassword();
 
             DBConnector myDB = DBConnector.GetInstance();
             if (myDB.LogInUser(username, pwd))
@@ -92,44 +88,6 @@ namespace MonsterTradingCardGame
                 Console.WriteLine("\nSignup Failed!");
             }
         }
-        public static String GetPassword()
-        {
-            string pwd = "";
-            while (true)
-            {
-                ConsoleKeyInfo i = Console.ReadKey(true);
-                if (i.Key == ConsoleKey.Enter)
-                {
-                    break;
-                }
-                else if (i.Key == ConsoleKey.Backspace)
-                {
-                    if (pwd.Length > 0)
-                    {
-                        pwd = pwd.Remove(pwd.Length - 1);
-                        Console.Write("\b \b");
-                    }
-                }
-                else if (i.KeyChar != '\u0000')
-                {
-                    pwd += (i.KeyChar);
-                    Console.Write("*");
-                }
-            }
-            return pwd;
-        }
-        public static void PrintUserMenu(string userName)
-        {
-            Console.WriteLine($"Logged in as {userName}\n\n");
-            Console.WriteLine("What would you like to do?:");
-            Console.WriteLine("1 - PLAY");
-            Console.WriteLine("2 - BUY A PACKAGE");
-            Console.WriteLine("3 - CRAFT YOUR DECK");
-            Console.WriteLine("4 - View the Leaderboard");
-            Console.WriteLine("5 - View your Profile");
-            Console.WriteLine("6 - Trade");
-            Console.WriteLine("7 - LOGOUT");
-        }
         public static int GetUserMenuInput()
         {
             int i;
@@ -155,7 +113,7 @@ namespace MonsterTradingCardGame
         {
             while (true)
             {
-                PrintUserMenu(userName);
+                UI.PrintUserMenu(userName);
                 int i = GetUserMenuInput();
 
                 //to do
