@@ -11,8 +11,6 @@ namespace MonsterTradingCardGame
                 UI.PrintUserMenu(userName);
                 int input = UI.GetUserMenuInput();
 
-                //to do
-
                 if (input == 1)
                 {
                     Console.WriteLine("Play");
@@ -27,7 +25,12 @@ namespace MonsterTradingCardGame
                 }
                 if (input == 4)
                 {
-                    Console.WriteLine("View the Leaderboard");
+                    Console.Clear();
+                    Console.WriteLine("LEADERBOARD\n");
+                    DBConnector myDB = DBConnector.GetInstance();
+                    myDB.GetLeaderboard();
+                    Tools.PressAnyKey();
+                    Console.Clear();
                 }
                 if (input == 5)
                 {
@@ -41,6 +44,12 @@ namespace MonsterTradingCardGame
                 {
                     Console.Clear();
                     return;
+                }
+                if (input == 8)
+                {
+                    Console.Clear();
+                    Console.WriteLine("GoodBye!");
+                    Environment.Exit(0);
                 }
             }
         }

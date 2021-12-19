@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Npgsql;
 using System;
+using System.Linq;
 using System.Security.Cryptography;
 
 namespace MonsterTradingCardGame
@@ -84,5 +85,27 @@ namespace MonsterTradingCardGame
             Close();
             return false;
         }
+        public bool GetLeaderboard()
+        {
+            int index = 1;
+            Open();
+            NpgsqlCommand myCommand = new("SELECT * FROM player ORDER BY elo DESC", connection);
+            using NpgsqlDataReader reader = myCommand.ExecuteReader();
+            while (reader.Read())
+            {
+                Console.WriteLine(index + ". Name: {0}     ELO: {1}\n", reader.GetString(0), reader.GetInt32(2));
+                index++;
+            }
+            Close();
+            return true;
+        }
+        //public bool GetProfile(string username)
+        //{
+
+        //}
+        //For Future Reference: How to Count Number of Rows
+        //NpgsqlCommand myCount = new("SELECT COUNT(*) FROM player", connection);
+        //int count = Convert.ToInt32(myCount.ExecuteScalar());
+        //Console.WriteLine(count);
     }
 }

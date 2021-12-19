@@ -19,6 +19,7 @@ namespace MonsterTradingCardGame
             Console.WriteLine("5 - View your Profile");
             Console.WriteLine("6 - Trade");
             Console.WriteLine("7 - LOGOUT");
+            Console.WriteLine("8 - QUIT");
         }
         public static int GetUserMenuInput()
         {
@@ -26,7 +27,7 @@ namespace MonsterTradingCardGame
             try
             {
                 input = Convert.ToInt32(Console.ReadLine());
-                if (input < 1 || input > 7)
+                if (input < 1 || input > 8)
                 {
                     throw new ArgumentException("Invalid Input");
                 }
