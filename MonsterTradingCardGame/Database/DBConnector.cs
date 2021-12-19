@@ -91,13 +91,18 @@ namespace MonsterTradingCardGame
             Open();
             NpgsqlCommand myCommand = new("SELECT * FROM player ORDER BY elo DESC", connection);
             using NpgsqlDataReader reader = myCommand.ExecuteReader();
-            while (reader.Read())
+            if (reader != null)
             {
-                Console.WriteLine(index + ". Name: {0}     ELO: {1}\n", reader.GetString(0), reader.GetInt32(2));
-                index++;
+                while (reader.Read())
+                {
+                    Console.WriteLine(index + ". Name: {0}     ELO: {1}\n", reader.GetString(0), reader.GetInt32(2));
+                    index++;
+                }
+                Close();
+                return true;
             }
             Close();
-            return true;
+            return false;
         }
         //public bool GetProfile(string username)
         //{
