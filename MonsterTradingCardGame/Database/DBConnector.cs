@@ -104,13 +104,23 @@ namespace MonsterTradingCardGame
             Close();
             return false;
         }
-        //public bool GetProfile(string username)
-        //{
-
-        //}
-        //For Future Reference: How to Count Number of Rows
-        //NpgsqlCommand myCount = new("SELECT COUNT(*) FROM player", connection);
-        //int count = Convert.ToInt32(myCount.ExecuteScalar());
-        //Console.WriteLine(count);
+        public bool GetProfile(string username)
+        {
+            Open();
+            NpgsqlCommand myCommand = new("SELECT * FROM player WHERE username = @name;", connection);
+            myCommand.Parameters.AddWithValue("name", username);
+            using NpgsqlDataReader reader = myCommand.ExecuteReader();
+            if (reader != null)
+            {
+                while (reader.Read())
+                {
+                    Console.WriteLine("Name: {0}\nELO: {1}\nCoins: {2}", reader.GetString(0), reader.GetInt32(2), reader.GetInt32(3));
+                }
+                Close();
+                return true;
+            }
+            Close();
+            return false;
+        }
     }
 }

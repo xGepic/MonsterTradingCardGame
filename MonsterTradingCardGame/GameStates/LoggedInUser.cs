@@ -34,7 +34,12 @@ namespace MonsterTradingCardGame
                 }
                 if (input == 5)
                 {
-                    Console.WriteLine("View your Profile");
+                    Console.Clear();
+                    Console.WriteLine("MY PROFILE\n");
+                    DBConnector myDB = DBConnector.GetInstance();
+                    myDB.GetProfile(userName);
+                    Tools.PressAnyKey();
+                    Console.Clear();
                 }
                 if (input == 6)
                 {
