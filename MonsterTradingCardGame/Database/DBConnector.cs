@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Npgsql;
 using System;
-using System.Linq;
 using System.Security.Cryptography;
 
 namespace MonsterTradingCardGame
@@ -112,10 +111,8 @@ namespace MonsterTradingCardGame
             using NpgsqlDataReader reader = myCommand.ExecuteReader();
             if (reader != null)
             {
-                while (reader.Read())
-                {
-                    Console.WriteLine("Name: {0}\nELO: {1}\nCoins: {2}", reader.GetString(0), reader.GetInt32(2), reader.GetInt32(3));
-                }
+                reader.Read();
+                Console.WriteLine("Name: {0}\nELO: {1}\nCoins: {2}", reader.GetString(0), reader.GetInt32(2), reader.GetInt32(3));
                 Close();
                 return true;
             }

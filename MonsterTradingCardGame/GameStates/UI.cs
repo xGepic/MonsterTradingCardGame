@@ -11,7 +11,7 @@ namespace MonsterTradingCardGame
         public static void PrintUserMenu(string userName)
         {
             Console.WriteLine($"Logged in as {userName}\n\n");
-            Console.WriteLine("What would you like to do?:");
+            Console.WriteLine("What would you like to do?:\n");
             Console.WriteLine("1 - PLAY");
             Console.WriteLine("2 - BUY A PACKAGE");
             Console.WriteLine("3 - CRAFT YOUR DECK");
@@ -20,6 +20,7 @@ namespace MonsterTradingCardGame
             Console.WriteLine("6 - Trade");
             Console.WriteLine("7 - LOGOUT");
             Console.WriteLine("8 - QUIT");
+            Console.Write("\nInput: ");
         }
         public static int GetUserMenuInput()
         {

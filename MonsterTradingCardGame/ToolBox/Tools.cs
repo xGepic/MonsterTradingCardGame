@@ -7,7 +7,7 @@ namespace MonsterTradingCardGame
         public static void PressAnyKey()
         {
             ConsoleKeyInfo k;
-            Console.WriteLine("\nPress ENTER to exit...");
+            Console.Write("\nPress ENTER to exit...");
             while (true)
             {
                 k = Console.ReadKey(true);
