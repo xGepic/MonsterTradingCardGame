@@ -6,6 +6,7 @@ namespace MonsterTradingCardGame
     {
         public static void LoggedInMenu(string userName)
         {
+            Shop myShop = new();
             while (true)
             {
                 UI.PrintUserMenu(userName);
@@ -17,7 +18,9 @@ namespace MonsterTradingCardGame
                 }
                 if (input == 2)
                 {
-                    Console.WriteLine("Buy a Package");
+                    Console.Clear();
+                    Console.WriteLine("WELCOME TO THE SHOP\n");
+                    myShop.ShopMenu();
                 }
                 if (input == 3)
                 {

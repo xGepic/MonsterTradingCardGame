@@ -94,7 +94,7 @@ namespace MonsterTradingCardGame
             {
                 while (reader.Read())
                 {
-                    Console.WriteLine(index + ". Name: {0}     ELO: {1}\n", reader.GetString(0), reader.GetInt32(2));
+                    Console.WriteLine(index + ". Name: {0} ELO: {1}\n", reader.GetString(0).PadRight(10, ' '), reader.GetInt32(2).ToString().PadRight(10, ' '));
                     index++;
                 }
                 Close();
