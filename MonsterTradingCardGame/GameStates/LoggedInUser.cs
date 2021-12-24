@@ -20,7 +20,7 @@ namespace MonsterTradingCardGame
                 {
                     Console.Clear();
                     Console.WriteLine("WELCOME TO THE SHOP\n");
-                    myShop.ShopMenu();
+                    myShop.ShopMenu(userName);
                 }
                 if (input == 3)
                 {
