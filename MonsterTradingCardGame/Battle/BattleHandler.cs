@@ -9,11 +9,11 @@ namespace MonsterTradingCardGame
         private readonly User Player2;
         private readonly List<ICard> BattleDeck1 = new();
         private readonly List<ICard> BattleDeck2 = new();
-        private int roundCounter = 1;
         private const int player1Won = 1;
         private const int player2Won = 2;
         private const int maxRoundCounter = 100;
         private const int kValue = 30;
+        private int roundCounter = 1;
         public BattleHandler(User User1, User User2)
         {
             Player1 = User1;
