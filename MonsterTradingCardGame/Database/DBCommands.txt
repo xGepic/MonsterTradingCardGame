@@ -1,4 +1,4 @@
 ﻿CREATE TABLE player(username varchar(20) PRIMARY KEY, password text NOT NULL, ELO int NOT NULL, coins int NOT NULL, salt bytea NOT NULL);
 CREATE TABLE card(ID SERIAL PRIMARY KEY, name varchar(255) NOT NULL, element int NOT NULL, damage int NOT NULL);
-CREATE TABLE cardStack(ID INT NOT NULL, username varchar(20) NOT NULL, FOREIGN KEY (ID) REFERENCEES card(ID), FOREIGN KEY(username) REFERENCES player(username));
-CREATE TABLE cardDeck(ID INT NOT NULL, username varchar(20) NOT NULL, FOREIGN KEY (ID) REFERENCEES card(ID), FOREIGN KEY(username) REFERENCES player(username));
+CREATE TABLE cardStack(ID INT NOT NULL, username varchar(20) NOT NULL, FOREIGN KEY (ID) REFERENCES card(ID), FOREIGN KEY(username) REFERENCES player(username));
+CREATE TABLE cardDeck(ID INT NOT NULL, username varchar(20) NOT NULL, FOREIGN KEY (ID) REFERENCES card(ID), FOREIGN KEY(username) REFERENCES player(username));

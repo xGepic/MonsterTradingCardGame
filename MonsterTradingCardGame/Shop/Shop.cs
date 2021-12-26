@@ -63,6 +63,7 @@ namespace MonsterTradingCardGame
         }
         public void BuyAPack()
         {
+            DBConnector myDB = DBConnector.GetInstance();
 
         }
     }
