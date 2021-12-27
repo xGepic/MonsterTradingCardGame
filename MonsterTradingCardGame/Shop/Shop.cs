@@ -8,13 +8,13 @@ namespace MonsterTradingCardGame
         {
 
         }
-        public void PrintShopMenu()
+        public static void PrintShopMenu()
         {
             Console.WriteLine("1 - Buy a Card Pack");
             Console.WriteLine("2 - Go Back");
             Console.Write("\nInput: ");
         }
-        public int GetShopInput()
+        public static int GetShopInput()
         {
             int input;
             try
@@ -47,7 +47,7 @@ namespace MonsterTradingCardGame
                     if (myDB.GetPlayerCoins(username) > 5)
                     {
                         myDB.DecreaseCoinsofPlayer(username);
-
+                        myDB.BuyACardPack();
                     }
                     else
                     {
@@ -60,11 +60,6 @@ namespace MonsterTradingCardGame
                     break;
                 }
             }
-        }
-        public void BuyAPack()
-        {
-            DBConnector myDB = DBConnector.GetInstance();
-
         }
     }
 }

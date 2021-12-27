@@ -7,7 +7,7 @@ namespace MonsterTradingCardGame
     public class Stack : IDeck
     {
         public Dictionary<string, ICard> MyStack;
-        private const int maxCardCount = 10;
+        private const int maxCardCount = 20;
         public Stack()
         {
             MyStack = new Dictionary<string, ICard>();

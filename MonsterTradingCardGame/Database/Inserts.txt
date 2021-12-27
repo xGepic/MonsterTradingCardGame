@@ -1,0 +1,31 @@
+﻿//////////////////////////////////////////////////
+//INSERTS
+
+INSERT INTO card VALUES('FireKnight', 15, 1, 1, 4);
+INSERT INTO card VALUES('WaterWizzard', 10, 1, 2, 2);
+INSERT INTO card VALUES('GrassDragon', 20, 1, 0, 1);
+INSERT INTO card VALUES('TheKraken', 25, 1, 2, 5);
+INSERT INTO card VALUES('WaterGoblin', 10, 1, 2, 0);
+INSERT INTO card VALUES('FireOrk', 15, 1, 1, 3);
+INSERT INTO card VALUES('FireSpell', 10, 0, 1);
+INSERT INTO card VALUES('WaterSpell', 10, 0, 2);
+INSERT INTO card VALUES('GrassSpell', 10, 0, 0);
+
+
+
+
+
+//CheatSheet
+
+
+GRASS = 0
+FIRE = 1
+WATER = 2
+
+Goblin = 0 
+Dragon = 1
+Wizzard = 2
+Ork = 3
+Knight = 4
+Kraken = 5
+Elf = 6
