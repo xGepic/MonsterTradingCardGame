@@ -150,21 +150,24 @@ namespace MonsterTradingCardGame
         }
         public bool BuyACardPack()
         {
+            int index = 1;
             Open();
             NpgsqlCommand myCommand = new("SELECT * FROM card ORDER BY RANDOM() LIMIT 5;", connection);
             using NpgsqlDataReader reader = myCommand.ExecuteReader();
             if (reader != null)
             {
+                Console.WriteLine("You acquired the following cards:\n");
                 while (reader.Read())
                 {
                     if (reader.IsDBNull(4))
                     {
-                        //Is Spell
+                        Console.WriteLine(index + ". Name: {0}, Damage: {1}, CardType: {2}, ElementType: {3}\n", reader.GetString(0), reader.GetInt32(1), (CardType)reader.GetInt32(2), (ElementType)reader.GetInt32(3));
+                        index++;
                     }
                     else
                     {
-                        //Is Monster
-                        Console.WriteLine(reader.GetString(0) + " " + reader.GetInt32(1) + " " + (CardType)reader.GetInt32(2) + " " + (ElementType)reader.GetInt32(3) + " " + (MonsterType)reader.GetInt32(4));
+                        Console.WriteLine(index + ". Name: {0}, Damage: {1}, CardType: {2}, ElementType: {3}, MonsterType: {4}\n", reader.GetString(0), reader.GetInt32(1), (CardType)reader.GetInt32(2), (ElementType)reader.GetInt32(3), (MonsterType)reader.GetInt32(4));
+                        index++;
                     }
                 }
                 Close();

@@ -16,7 +16,16 @@ CREATE TABLE card(
 	MonsterType int
 );
 
+CREATE TABLE stackCards(
+	userName varchar(24),
+	cardName varchar(24) UNIQUE,
+	FOREIGN KEY(userName) REFERENCES player(username),
+	FOREIGN KEY(cardName) REFERENCES card(name)
+);
 
-to do
-CREATE TABLE cardStack(ID INT NOT NULL, username varchar(20) NOT NULL, FOREIGN KEY (ID) REFERENCES card(ID), FOREIGN KEY(username) REFERENCES player(username));
-CREATE TABLE cardDeck(ID INT NOT NULL, username varchar(20) NOT NULL, FOREIGN KEY (ID) REFERENCES card(ID), FOREIGN KEY(username) REFERENCES player(username));
+CREATE TABLE deckCards(
+	userName varchar(24),
+	cardName varchar(24) UNIQUE,
+	FOREIGN KEY(userName) REFERENCES player(username),
+	FOREIGN KEY(cardName) REFERENCES stackCards(cardName)
+);

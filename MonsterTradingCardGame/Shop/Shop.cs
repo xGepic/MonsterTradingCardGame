@@ -48,6 +48,7 @@ namespace MonsterTradingCardGame
                     {
                         myDB.DecreaseCoinsofPlayer(username);
                         myDB.BuyACardPack();
+                        Tools.PressAnyKey();
                     }
                     else
                     {
