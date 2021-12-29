@@ -132,21 +132,15 @@ namespace MonsterTradingCardGame
             Close();
             return 0;
         }
-        public bool DecreaseCoinsofPlayer(string username)
+        public void DecreaseCoinsofPlayer(string username)
         {
             Open();
             NpgsqlCommand myCommand = new("UPDATE player SET coins=coins-5 WHERE username = @name;", connection);
             myCommand.Parameters.AddWithValue("name", username);
             int rows = myCommand.ExecuteNonQuery();
-            if (rows == 1)
-            {
-                Close();
-                return true;
-            }
             Close();
-            return false;
         }
-        public bool BuyACardPack(string username)
+        public void BuyACardPack(string username)
         {
             int index = 1;
             List<string> CardList = new();
@@ -175,12 +169,10 @@ namespace MonsterTradingCardGame
                 Console.WriteLine("\nAll new Cards have been added to your Stack!\n\n");
                 Close();
                 AddCardToStack(username, CardList);
-                return true;
             }
             Close();
-            return false;
         }
-        public bool AddCardToStack(string username, List<string> cardList)
+        public void AddCardToStack(string username, List<string> cardList)
         {
             Open();
             NpgsqlCommand searchCommand = new("SELECT cardname FROM stackcards WHERE username = @name AND cardname = @name2", connection);
@@ -200,7 +192,6 @@ namespace MonsterTradingCardGame
                 }
             }
             Close();
-            return true;
         }
         public void PrintPlayerStack(string username)
         {
@@ -211,8 +202,9 @@ namespace MonsterTradingCardGame
             Object response = cmd.ExecuteScalar();
             if (response == null)
             {
-                Console.WriteLine("You have no Cards!");
+                Console.WriteLine("You have no Cards!\n");
                 Close();
+                Tools.PressAnyKey();
             }
             else
             {
@@ -229,6 +221,34 @@ namespace MonsterTradingCardGame
                     return;
                 }
             }
+        }
+        public void AddCardsToDeck(string username, List<int> cardlist)
+        {
+            string temp;
+            Open();
+            NpgsqlCommand cmd = new("SELECT cardname FROM stackcards WHERE username = @name LIMIT 1 OFFSET @offset", connection);
+            NpgsqlCommand insertCommand = new("INSERT INTO deckcards (username, cardname) VALUES (@username, @cardname);", connection);
+            for (int i = 0; i < cardlist.Count; i++)
+            {
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("name", username);
+                cmd.Parameters.AddWithValue("offset", cardlist[i] - 1);
+                Object response = cmd.ExecuteScalar();
+                Console.WriteLine(response.ToString());
+            }
+            Close();
+        }
+        public void ClearDeck(string username)
+        {
+            Open();
+            NpgsqlCommand cmd = new("DELETE FROM deckcards WHERE username = @name", connection);
+            cmd.Parameters.AddWithValue("name", username);
+            cmd.ExecuteScalar();
+            Close();
+            Console.Clear();
+            Console.WriteLine("Deck cleared!\n");
+            Tools.PressAnyKey();
+            Console.Clear();
         }
     }
 }

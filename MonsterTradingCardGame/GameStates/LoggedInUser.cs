@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MonsterTradingCardGame
 {
@@ -26,10 +27,11 @@ namespace MonsterTradingCardGame
                 }
                 if (input == 3)
                 {
+
                     Console.Clear();
                     Console.WriteLine("CRAFT YOUR DECK\n");
-                    DBConnector myDB = DBConnector.GetInstance();
-                    myDB.PrintPlayerStack(userName);
+                    CraftYourDeck.DeckCraftingMenu(userName);
+                    Console.Clear();
                 }
                 if (input == 4)
                 {
