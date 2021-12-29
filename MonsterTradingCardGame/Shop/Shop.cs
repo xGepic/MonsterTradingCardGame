@@ -44,15 +44,17 @@ namespace MonsterTradingCardGame
                 if (shopInput == 1)
                 {
                     DBConnector myDB = DBConnector.GetInstance();
-                    if (myDB.GetPlayerCoins(username) > 5)
+                    if (myDB.GetPlayerCoins(username) >= 5)
                     {
                         myDB.DecreaseCoinsofPlayer(username);
-                        myDB.BuyACardPack();
+                        myDB.BuyACardPack(username);
                         Tools.PressAnyKey();
+                        break;
                     }
                     else
                     {
-                        Console.WriteLine("[ERROR] You dont have enough Coins to buy a Card Pack!");
+                        Console.Clear();
+                        Console.WriteLine("\n[ERROR] You dont have enough Coins to buy a Card Pack!\n");
                     }
                 }
                 if (shopInput == 2)

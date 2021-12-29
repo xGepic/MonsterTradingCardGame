@@ -14,6 +14,7 @@ namespace MonsterTradingCardGame
             Console.WriteLine("1 - LOGIN");
             Console.WriteLine("2 - SIGNUP");
             Console.WriteLine("3 - QUIT");
+            Console.Write("\nInput: ");
             try
             {
                 input = Convert.ToInt32(Console.ReadLine());
