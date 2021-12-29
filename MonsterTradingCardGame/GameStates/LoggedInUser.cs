@@ -14,6 +14,7 @@ namespace MonsterTradingCardGame
 
                 if (input == 1)
                 {
+                    //to do
                     Console.WriteLine("Play");
                 }
                 if (input == 2)
@@ -25,7 +26,10 @@ namespace MonsterTradingCardGame
                 }
                 if (input == 3)
                 {
-                    Console.WriteLine("Craft your Deck");
+                    Console.Clear();
+                    Console.WriteLine("CRAFT YOUR DECK\n");
+                    DBConnector myDB = DBConnector.GetInstance();
+                    myDB.PrintPlayerStack(userName);
                 }
                 if (input == 4)
                 {
@@ -47,6 +51,7 @@ namespace MonsterTradingCardGame
                 }
                 if (input == 6)
                 {
+                    //to do
                     Console.WriteLine("Trade");
                 }
                 if (input == 7)
