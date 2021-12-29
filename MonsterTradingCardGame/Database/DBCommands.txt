@@ -20,12 +20,14 @@ CREATE TABLE stackCards(
 	userName varchar(24) NOT NULL,
 	cardName varchar(24) UNIQUE,
 	FOREIGN KEY(userName) REFERENCES player(username),
-	FOREIGN KEY(cardName) REFERENCES card(name)
+	FOREIGN KEY(cardName) REFERENCES card(name),
+	UNIQUE(userName, cardName)
 );
 
 CREATE TABLE deckCards(
 	userName varchar(24) NOT NULL,
 	cardName varchar(24) UNIQUE,
 	FOREIGN KEY(userName) REFERENCES player(username),
-	FOREIGN KEY(cardName) REFERENCES stackCards(cardName)
+	FOREIGN KEY(cardName) REFERENCES stackCards(cardName),
+	UNIQUE(userName, cardName)
 );

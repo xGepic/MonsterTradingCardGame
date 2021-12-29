@@ -208,20 +208,27 @@ namespace MonsterTradingCardGame
             Open();
             NpgsqlCommand cmd = new("SELECT * FROM stackcards WHERE username = @name", connection);
             cmd.Parameters.AddWithValue("name", username);
-            using NpgsqlDataReader reader = cmd.ExecuteReader();
-            if (reader != null)
+            Object response = cmd.ExecuteScalar();
+            if (response == null)
             {
-                Console.WriteLine("Here are your Cards:\n");
-                while (reader.Read())
-                {
-                    Console.WriteLine(index + ". " + reader.GetString(1) + "\n");
-                    index++;
-                }
+                Console.WriteLine("You have no Cards!");
                 Close();
-                return;
             }
-            Console.WriteLine("You have no Cards!");
-            Close();
+            else
+            {
+                using NpgsqlDataReader reader = cmd.ExecuteReader();
+                if (reader != null)
+                {
+                    Console.WriteLine("Here are your Cards:\n");
+                    while (reader.Read())
+                    {
+                        Console.WriteLine(index + ". " + reader.GetString(1) + "\n");
+                        index++;
+                    }
+                    Close();
+                    return;
+                }
+            }
         }
     }
 }
