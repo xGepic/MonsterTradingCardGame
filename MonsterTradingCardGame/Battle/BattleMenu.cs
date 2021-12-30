@@ -39,7 +39,8 @@ namespace MonsterTradingCardGame
                 int shopInput = GetBattleMenuInput();
                 if (shopInput == 1)
                 {
-                    //to do
+                    DBConnector myDB = DBConnector.GetInstance();
+                    myDB.PrintPlayerDeck(username);
                 }
                 if (shopInput == 2)
                 {
