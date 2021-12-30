@@ -46,6 +46,12 @@ namespace MonsterTradingCardGame
                 {
                     Console.Clear();
                     DBConnector myDB = DBConnector.GetInstance();
+                    if (!myDB.IsDeckEmpty(username))
+                    {
+                        Console.WriteLine("You already have Cards in your Deck!\n");
+                        Tools.PressAnyKey();
+                        return;
+                    }
                     myDB.PrintPlayerStack(username);
                     CardList = CraftYourDeck.GetCardsForDeck();
                     myDB.AddCardsToDeck(username, CardList);
@@ -88,6 +94,8 @@ namespace MonsterTradingCardGame
                 int Card4 = Convert.ToInt32(Console.ReadLine());
                 cardlist.Add(Card4);
                 index--;
+                Console.Clear();
+                Console.WriteLine("Cards have been added to your Deck!\n");
                 return cardlist;
             }
             catch (Exception e)

@@ -281,5 +281,19 @@ namespace MonsterTradingCardGame
                 }
             }
         }
+        public bool IsDeckEmpty(string username)
+        {
+            Open();
+            NpgsqlCommand cmd = new("SELECT * FROM deckcards WHERE username = @name", connection);
+            cmd.Parameters.AddWithValue("name", username);
+            Object response = cmd.ExecuteScalar();
+            if(response != null)
+            {
+                Close();
+                return false;
+            }
+            Close();
+            return true;
+        }
     }
 }

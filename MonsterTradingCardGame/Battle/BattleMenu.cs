@@ -41,13 +41,14 @@ namespace MonsterTradingCardGame
                 {
                     DBConnector myDB = DBConnector.GetInstance();
                     myDB.PrintPlayerDeck(username);
+                    Tools.PressAnyKey();
+                    //to do
                 }
                 if (shopInput == 2)
                 {
                     Console.Clear();
                     break;
                 }
-
             }
         }
     }
