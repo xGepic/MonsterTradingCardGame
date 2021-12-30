@@ -218,7 +218,6 @@ namespace MonsterTradingCardGame
                         index++;
                     }
                     Close();
-                    return;
                 }
             }
         }
@@ -279,7 +278,6 @@ namespace MonsterTradingCardGame
                         index++;
                     }
                     Close();
-                    return;
                 }
             }
         }
