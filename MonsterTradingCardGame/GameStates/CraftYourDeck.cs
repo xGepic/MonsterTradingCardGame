@@ -7,6 +7,7 @@ namespace MonsterTradingCardGame
     {
         public static void PrintDeckCraftingMenu()
         {
+            Console.WriteLine("CRAFT YOUR DECK\n");
             Console.WriteLine("1 - Craft your Deck");
             Console.WriteLine("2 - Clear your Deck");
             Console.WriteLine("3 - Go Back");

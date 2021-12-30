@@ -224,7 +224,6 @@ namespace MonsterTradingCardGame
         }
         public void AddCardsToDeck(string username, List<int> cardlist)
         {
-            string temp;
             Open();
             NpgsqlCommand cmd = new("SELECT cardname FROM stackcards WHERE username = @name LIMIT 1 OFFSET @offset", connection);
             NpgsqlCommand insertCommand = new("INSERT INTO deckcards (username, cardname) VALUES (@username, @cardname);", connection);
@@ -234,7 +233,11 @@ namespace MonsterTradingCardGame
                 cmd.Parameters.AddWithValue("name", username);
                 cmd.Parameters.AddWithValue("offset", cardlist[i] - 1);
                 Object response = cmd.ExecuteScalar();
-                Console.WriteLine(response.ToString());
+                string tempCard = response.ToString();
+                insertCommand.Parameters.Clear();
+                insertCommand.Parameters.AddWithValue("username", username);
+                insertCommand.Parameters.AddWithValue("cardname", tempCard);
+                insertCommand.ExecuteNonQuery();
             }
             Close();
         }

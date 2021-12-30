@@ -27,9 +27,7 @@ namespace MonsterTradingCardGame
                 }
                 if (input == 3)
                 {
-
                     Console.Clear();
-                    Console.WriteLine("CRAFT YOUR DECK\n");
                     CraftYourDeck.DeckCraftingMenu(userName);
                     Console.Clear();
                 }
