@@ -15,8 +15,9 @@ namespace MonsterTradingCardGame
 
                 if (input == 1)
                 {
-                    //to do
-                    Console.WriteLine("Play");
+                    Console.Clear();
+                    Console.WriteLine("WELCOME TO THE ARENA\n");
+                    BattleMenu.GetBattleMenu(userName);
                 }
                 if (input == 2)
                 {
