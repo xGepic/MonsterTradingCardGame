@@ -41,8 +41,8 @@ namespace MonsterTradingCardGame
                 {
                     DBConnector myDB = DBConnector.GetInstance();
                     myDB.PrintPlayerDeck(username);
-                    Tools.PressAnyKey();
-                    //to do
+                    Tools.PressToContinue();
+                    Console.Clear();
                 }
                 if (shopInput == 2)
                 {

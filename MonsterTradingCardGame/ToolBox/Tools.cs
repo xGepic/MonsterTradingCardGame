@@ -17,5 +17,10 @@ namespace MonsterTradingCardGame
                 }
             }
         }
+        public static void PressToContinue()
+        {
+            Console.Write("\nPress ANY KEY to continue...");
+            Console.ReadKey();
+        }
     }
 }
