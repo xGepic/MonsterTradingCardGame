@@ -37,7 +37,7 @@ namespace MonsterTradingCardGame
         }
         public static void DeckCraftingMenu(string username)
         {
-            List<int> CardList = new();
+            List<int> CardList;
             while (true)
             {
                 PrintDeckCraftingMenu();
