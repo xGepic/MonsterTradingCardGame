@@ -43,7 +43,7 @@ namespace MonsterTradingCardGame
                     myDB.PrintPlayerDeck(username);
                     Tools.PressToContinue();
                     Console.Clear();
-
+                    //to do
                 }
                 if (battleInput == 2)
                 {
