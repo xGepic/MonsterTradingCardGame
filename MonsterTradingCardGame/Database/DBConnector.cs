@@ -117,6 +117,21 @@ namespace MonsterTradingCardGame
             Close();
             return false;
         }
+        public int GetPlayerElo(string username)
+        {
+            Open();
+            NpgsqlCommand cmd = new("SELECT elo FROM player WHERE username = @name", connection);
+            cmd.Parameters.AddWithValue("name", username);
+            Object elo = cmd.ExecuteScalar();
+            if (elo != null)
+            {
+                int playerElo = Convert.ToInt32(elo);
+                Close();
+                return playerElo;
+            }
+            Close();
+            return 0;
+        }
         public int GetPlayerCoins(string username)
         {
             Open();
@@ -137,7 +152,7 @@ namespace MonsterTradingCardGame
             Open();
             NpgsqlCommand myCommand = new("UPDATE player SET coins=coins-5 WHERE username = @name;", connection);
             myCommand.Parameters.AddWithValue("name", username);
-            int rows = myCommand.ExecuteNonQuery();
+            myCommand.ExecuteNonQuery();
             Close();
         }
         public void BuyACardPack(string username)
@@ -271,6 +286,7 @@ namespace MonsterTradingCardGame
                 using NpgsqlDataReader reader = cmd.ExecuteReader();
                 if (reader != null)
                 {
+                    Console.Clear();
                     Console.WriteLine("You will enter the Arena with the following Cards:\n");
                     while (reader.Read())
                     {
@@ -287,13 +303,78 @@ namespace MonsterTradingCardGame
             NpgsqlCommand cmd = new("SELECT * FROM deckcards WHERE username = @name", connection);
             cmd.Parameters.AddWithValue("name", username);
             Object response = cmd.ExecuteScalar();
-            if(response != null)
+            if (response != null)
             {
                 Close();
                 return false;
             }
             Close();
             return true;
+        }
+        public Deck GetPlayerDeck(string username)
+        {
+            Open();
+            List<string> tempList = new();
+            Deck myDeck = new();
+            NpgsqlCommand seachCmd = new("SELECT * FROM deckcards WHERE username = @name", connection);
+            seachCmd.Parameters.AddWithValue("name", username);
+            using NpgsqlDataReader reader = seachCmd.ExecuteReader();
+            if (reader != null)
+            {
+                while (reader.Read())
+                {
+                    string temp = reader.GetString(1);
+                    tempList.Add(temp);
+                }
+            }
+            Close();
+            Open();
+            NpgsqlCommand getCardCmd = new("SELECT * FROM card WHERE name = @cardname", connection);
+            for (int i = 0; i < tempList.Count; i++)
+            {
+                getCardCmd.Parameters.Clear();
+                getCardCmd.Parameters.AddWithValue("cardname", tempList[i]);
+                using NpgsqlDataReader reader2 = getCardCmd.ExecuteReader();
+                if (reader2 != null)
+                {
+                    while (reader2.Read())
+                    {
+                        if (reader2.IsDBNull(4))
+                        {
+                            myDeck.AddCard(new SpellCard(reader2.GetString(0), reader2.GetInt32(1), (ElementType)reader2.GetInt32(3)));
+                        }
+                        else
+                        {
+                            myDeck.AddCard(new MonsterCard(reader2.GetString(0), reader2.GetInt32(1), (ElementType)reader2.GetInt32(3), (MonsterType)reader2.GetInt32(4)));
+                        }
+                    }
+                }
+            }
+            Close();
+            return myDeck;
+        }
+        public Deck GetBotDeck()
+        {
+            Deck myDeck = new();
+            Open();
+            NpgsqlCommand cmd = new("SELECT * FROM card ORDER BY RANDOM() LIMIT 4;", connection);
+            using NpgsqlDataReader reader = cmd.ExecuteReader();
+            if (reader != null)
+            {
+                while (reader.Read())
+                {
+                    if (reader.IsDBNull(4))
+                    {
+                        myDeck.AddCard(new SpellCard(reader.GetString(0), reader.GetInt32(1), (ElementType)reader.GetInt32(3)));
+                    }
+                    else
+                    {
+                        myDeck.AddCard(new MonsterCard(reader.GetString(0), reader.GetInt32(1), (ElementType)reader.GetInt32(3), (MonsterType)reader.GetInt32(4)));
+                    }
+                }
+            }
+            Close();
+            return myDeck;
         }
     }
 }

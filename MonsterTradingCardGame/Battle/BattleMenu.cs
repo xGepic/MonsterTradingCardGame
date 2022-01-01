@@ -43,7 +43,12 @@ namespace MonsterTradingCardGame
                     myDB.PrintPlayerDeck(username);
                     Tools.PressToContinue();
                     Console.Clear();
-                    //to do
+                    User Player1 = GetPlayer(username);
+                    User Player2 = GetBot(1200);
+                    BattleHandler myBattle = new(Player1, Player2);
+                    myBattle.StartBattle();
+                    Tools.PressToContinue();
+                    Console.Clear();
                 }
                 if (battleInput == 2)
                 {
@@ -51,6 +56,22 @@ namespace MonsterTradingCardGame
                     break;
                 }
             }
+        }
+        public static User GetPlayer(string username)
+        {
+            DBConnector myDB = DBConnector.GetInstance();
+            Deck tempDeck = myDB.GetPlayerDeck(username);
+            int tempElo = myDB.GetPlayerElo(username);
+            int tempCoins = myDB.GetPlayerCoins(username);
+            User tempUser = new(username, tempDeck, tempElo, tempCoins);
+            return tempUser;
+        }
+        public static User GetBot(int strenght)
+        {
+            DBConnector myDB = DBConnector.GetInstance();
+            Deck tempDeck = myDB.GetBotDeck();
+            User bot = new("Bot", tempDeck, strenght, 0);
+            return bot;
         }
     }
 }

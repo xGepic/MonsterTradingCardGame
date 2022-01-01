@@ -4,15 +4,14 @@ namespace MonsterTradingCardGame
 {
     class User
     {
-        private readonly string Username;
+        public readonly string Username;
         public Deck MyDeck = new();
-        public Stack MyStack;
         public int Coins { get; set; }
         public int Elo { get; set; }
-        public User(string myUsername, Stack userStack, int eloPoints, int coins)
+        public User(string myUsername, Deck userDeck, int eloPoints, int coins)
         {
             Username = myUsername;
-            MyStack = userStack;
+            MyDeck = userDeck;
             Coins = coins;
             Elo = eloPoints;
         }
