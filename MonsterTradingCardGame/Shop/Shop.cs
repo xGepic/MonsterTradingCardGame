@@ -36,7 +36,7 @@ namespace MonsterTradingCardGame
                 return 0;
             }
         }
-        public void ShopMenu(string username)
+        public static void ShopMenu(string username)
         {
             while (true)
             {

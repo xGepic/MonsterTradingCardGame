@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace MonsterTradingCardGame
 {
@@ -7,7 +6,6 @@ namespace MonsterTradingCardGame
     {
         public static void LoggedInMenu(string userName)
         {
-            Shop myShop = new();
             while (true)
             {
                 UI.PrintUserMenu(userName);
@@ -23,7 +21,7 @@ namespace MonsterTradingCardGame
                 {
                     Console.Clear();
                     Console.WriteLine("WELCOME TO THE SHOP\n");
-                    myShop.ShopMenu(userName);
+                    Shop.ShopMenu(userName);
                     Console.Clear();
                 }
                 if (input == 3)
