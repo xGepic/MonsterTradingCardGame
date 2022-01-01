@@ -52,8 +52,9 @@ namespace MonsterTradingCardGame
                 }
                 if (input == 6)
                 {
-                    //to do
-                    Console.WriteLine("Trade");
+                    Console.Clear();
+                    TradeMenu.GetTradeMenu(userName);
+                    Console.Clear();
                 }
                 if (input == 7)
                 {
