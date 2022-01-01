@@ -9,6 +9,8 @@ namespace MonsterTradingCardGame
         private readonly User Bot;
         private readonly List<ICard> BattleDeck1 = new();
         private readonly List<ICard> BattleDeck2 = new();
+        private List<ICard> LoserDeck = new();
+        private List<ICard> WinnerDeck = new();
         private const int player1Won = 1;
         private const int player2Won = 2;
         private const int maxRoundCounter = 100;
@@ -28,11 +30,13 @@ namespace MonsterTradingCardGame
             {
                 BattleDeck1.Add(Player1.MyDeck.GetCard(i));
             }
+            LoserDeck = new List<ICard>(BattleDeck1);
             Player1.MyDeck.ClearCards();
             for (int i = 0; i < Player2DeckCount; i++)
             {
                 BattleDeck2.Add(Bot.MyDeck.GetCard(i));
             }
+            WinnerDeck = new List<ICard>(BattleDeck2);
             Bot.MyDeck.ClearCards();
             while (true)
             {
@@ -64,26 +68,27 @@ namespace MonsterTradingCardGame
             if (BattleDeck1.Count == 0)
             {
                 Console.WriteLine("Bot is the Winner!\n");
-                //for (int i = 0; i < BattleDeck2.Count; i++)
-                //{
-                //    Player2.MyStack.AddCard(BattleDeck2[i]);
-                //}
-                //float probablilityPlayer1 = Probability(Player1.Elo, Player2.Elo);
-                //float probablilityPlayer2 = Probability(Player2.Elo, Player1.Elo);
-                //Player1.Elo += (int)Math.Round(kValue * (0 - probablilityPlayer1));
-                //Player2.Elo += (int)Math.Round(kValue * (1 - probablilityPlayer2));
+                DBConnector myDB = DBConnector.GetInstance();
+                myDB.PlayerLostDeck(Player1.Username);
+                myDB.PlayerLostStack(Player1.Username, LoserDeck);
+                float probablilityPlayer1 = Probability(Player1.Elo, Bot.Elo);
+                float probablilityPlayer2 = Probability(Bot.Elo, Player1.Elo);
+                Player1.Elo += (int)Math.Round(kValue * (0 - probablilityPlayer1));
+                Bot.Elo += (int)Math.Round(kValue * (1 - probablilityPlayer2));
+                Console.WriteLine($"Your new Elo is : {Player1.Elo}");
+                myDB.UpdatePlayerElo(Player1.Username, Player1.Elo);
             }
             if (BattleDeck2.Count == 0)
             {
                 Console.WriteLine($"{Player1.Username} is the Winner!\n");
-                //for (int i = 0; i < BattleDeck1.Count; i++)
-                //{
-                //    Player1.MyStack.AddCard(BattleDeck1[i]);
-                //}
-                //float probablilityPlayer1 = Probability(Player1.Elo, Player2.Elo);
-                //float probablilityPlayer2 = Probability(Player2.Elo, Player1.Elo);
-                //Player1.Elo += (int)Math.Round(kValue * (1 - probablilityPlayer1));
-                //Player2.Elo += (int)Math.Round(kValue * (0 - probablilityPlayer2));
+                DBConnector myDB = DBConnector.GetInstance();
+                myDB.PlayerWinsCards(Player1.Username, WinnerDeck);
+                float probablilityPlayer1 = Probability(Player1.Elo, Bot.Elo);
+                float probablilityPlayer2 = Probability(Bot.Elo, Player1.Elo);
+                Player1.Elo += (int)Math.Round(kValue * (1 - probablilityPlayer1));
+                Bot.Elo += (int)Math.Round(kValue * (0 - probablilityPlayer2));
+                Console.WriteLine($"Your new Elo is : {Player1.Elo}");
+                myDB.UpdatePlayerElo(Player1.Username, Player1.Elo);
             }
         }
         public static float Probability(float rating1, float rating2)

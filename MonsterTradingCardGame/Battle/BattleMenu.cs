@@ -40,11 +40,19 @@ namespace MonsterTradingCardGame
                 if (battleInput == 1)
                 {
                     DBConnector myDB = DBConnector.GetInstance();
+                    if (myDB.IsDeckEmpty(username))
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Your Deck is empty!\n");
+                        Tools.PressAnyKey();
+                        Console.Clear();
+                        return;
+                    }
                     myDB.PrintPlayerDeck(username);
                     Tools.PressToContinue();
                     Console.Clear();
                     User Player1 = GetPlayer(username);
-                    User Player2 = GetBot(1200);
+                    User Player2 = GetBot(GetBotStrenght());
                     BattleHandler myBattle = new(Player1, Player2);
                     myBattle.StartBattle();
                     Tools.PressToContinue();
@@ -72,6 +80,22 @@ namespace MonsterTradingCardGame
             Deck tempDeck = myDB.GetBotDeck();
             User bot = new("Bot", tempDeck, strenght, 0);
             return bot;
+        }
+        public static int GetBotStrenght()
+        {
+            while (true)
+            {
+                try
+                {
+                    Console.Write("Enter Bot Strenght: ");
+                    int temp = Convert.ToInt32(Console.ReadLine());
+                    return temp;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("\n[Error] " + e.Message + "\n\n");
+                }
+            }
         }
     }
 }

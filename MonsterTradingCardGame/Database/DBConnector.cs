@@ -376,5 +376,49 @@ namespace MonsterTradingCardGame
             Close();
             return myDeck;
         }
+        public void PlayerLostStack(string username, List<ICard> cardList)
+        {
+            Open();
+            NpgsqlCommand deleteCmd = new("DELETE FROM stackcards WHERE cardname = @card AND username = @name", connection);
+            for (int i = 0; i < cardList.Count; i++)
+            {
+                deleteCmd.Parameters.Clear();
+                deleteCmd.Parameters.AddWithValue("name", username);
+                deleteCmd.Parameters.AddWithValue("card", cardList[i].Name);
+                deleteCmd.ExecuteScalar();
+            }
+            Close();
+        }
+        public void PlayerLostDeck(string username)
+        {
+            Open();
+            NpgsqlCommand cmd = new("DELETE FROM deckcards WHERE username = @name", connection);
+            cmd.Parameters.AddWithValue("name", username);
+            cmd.ExecuteScalar();
+            Close();
+        }
+        public void UpdatePlayerElo(string username, int elo)
+        {
+            Open();
+            NpgsqlCommand cmd = new("UPDATE player SET elo = @points WHERE username = @name", connection);
+            cmd.Parameters.AddWithValue("points", elo);
+            cmd.Parameters.AddWithValue("name", username);
+            cmd.ExecuteNonQuery();
+            Close();
+        }
+        public void PlayerWinsCards(string username, List<ICard> cardList)
+        {
+            Open();
+            NpgsqlCommand cmd = new("INSERT INTO stackcards (username, cardname) SELECT * FROM (SELECT @name AS username, @card AS cardname) AS temp WHERE NOT EXISTS (SELECT cardname FROM stackcards WHERE cardname = @card2);", connection);
+            for (int i = 0; i < cardList.Count; i++)
+            {
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("name", username);
+                cmd.Parameters.AddWithValue("card", cardList[i].Name);
+                cmd.Parameters.AddWithValue("card2", cardList[i].Name);
+                cmd.ExecuteNonQuery();
+            }
+            Close();
+        }
     }
 }
