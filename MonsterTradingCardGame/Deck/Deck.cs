@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace MonsterTradingCardGame
@@ -24,41 +23,9 @@ namespace MonsterTradingCardGame
                 return -1;
             }
         }
-        public ICard GetCard(string name)
-        {
-            bool myTry = MyCards.TryGetValue(name, out ICard card);
-            if (myTry)
-            {
-                return card;
-            }
-            else
-            {
-                return null;
-            }
-        }
         public ICard GetCard(int id)
         {
             return MyCards.ElementAt(id).Value;
-        }
-        public int RemoveCard(string name)
-        {
-            if (MyCards.Remove(name))
-            {
-                return 0;
-            }
-            else
-            {
-                return -1;
-            }
-        }
-        public void PrintCards()
-        {
-            int counter = 1;
-            foreach (var val in MyCards)
-            {
-                Console.WriteLine($"{counter}. {val.Key}");
-                counter++;
-            }
         }
         public int CountCards()
         {

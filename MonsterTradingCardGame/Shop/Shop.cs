@@ -2,12 +2,8 @@
 
 namespace MonsterTradingCardGame
 {
-    class Shop
+    static class Shop
     {
-        public Shop()
-        {
-
-        }
         public static void PrintShopMenu()
         {
             Console.WriteLine("1 - Buy a Card Pack");
