@@ -76,5 +76,19 @@ namespace MonsterTradingCardGame
             cmd.ExecuteScalar();
             Close();
         }
+        public bool IsStackEmpty(string username)
+        {
+            Open();
+            NpgsqlCommand cmd = new("SELECT * FROM stackcards WHERE username = @name", connection);
+            cmd.Parameters.AddWithValue("name", username);
+            Object response = cmd.ExecuteScalar();
+            if (response == null)
+            {
+                Close();
+                return true;
+            }
+            Close();
+            return false;
+        }
     }
 }

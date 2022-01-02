@@ -43,6 +43,13 @@ namespace MonsterTradingCardGame
                 if (tradeInput == 1)
                 {
                     DBConnector myDB = DBConnector.GetInstance();
+                    if (myDB.IsStackEmpty(username))
+                    {
+                        Console.Clear();
+                        Console.WriteLine("You have no Cards!\n");
+                        Tools.PressAnyKey();
+                        return;
+                    }
                     myDB.RemoveCardsForTrading(username);
                     List<string> tradeCards = myDB.GetTradeCards();
                     int cardToAdd = GetTradeCard();
