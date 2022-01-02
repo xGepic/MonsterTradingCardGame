@@ -37,5 +37,35 @@ namespace MonsterTradingCardGame
             Tools.PressAnyKey();
             Console.Clear();
         }
+        public void PrintDeck(string username)
+        {
+            int index = 1;
+            Open();
+            NpgsqlCommand cmd = new("SELECT * FROM deckcards WHERE username = @name", connection);
+            cmd.Parameters.AddWithValue("name", username);
+            Object response = cmd.ExecuteScalar();
+            if (response == null)
+            {
+                Console.Clear();
+                Console.WriteLine("You have no Cards!\n");
+                Close();
+                Tools.PressAnyKey();
+            }
+            else
+            {
+                using NpgsqlDataReader reader = cmd.ExecuteReader();
+                if (reader != null)
+                {
+                    Console.Clear();
+                    Console.WriteLine("You have the following Cards in your Deck\n");
+                    while (reader.Read())
+                    {
+                        Console.WriteLine(index + ". " + reader.GetString(1) + "\n");
+                        index++;
+                    }
+                    Close();
+                }
+            }
+        }
     }
 }

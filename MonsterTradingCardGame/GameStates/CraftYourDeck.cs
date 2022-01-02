@@ -10,7 +10,9 @@ namespace MonsterTradingCardGame
             Console.WriteLine("CRAFT YOUR DECK\n");
             Console.WriteLine("1 - Craft your Deck");
             Console.WriteLine("2 - Clear your Deck");
-            Console.WriteLine("3 - Go Back");
+            Console.WriteLine("3 - View your Deck");
+            Console.WriteLine("4 - View your Stack");
+            Console.WriteLine("5 - Go Back");
             Console.Write("\nInput: ");
         }
         public static int GetDeckCraftingInput()
@@ -19,7 +21,7 @@ namespace MonsterTradingCardGame
             try
             {
                 input = Convert.ToInt32(Console.ReadLine());
-                if (input != 1 && input != 2 && input != 3)
+                if (input < 1 || input > 5)
                 {
                     throw new ArgumentException("Invalid Input!");
                 }
@@ -62,6 +64,22 @@ namespace MonsterTradingCardGame
                     myDB.ClearDeck(username);
                 }
                 if (DeckCraftingInput == 3)
+                {
+                    Console.Clear();
+                    DBConnector myDB = DBConnector.GetInstance();
+                    myDB.PrintDeck(username);
+                    Tools.PressAnyKey();
+                    Console.Clear();
+                }
+                if (DeckCraftingInput == 4)
+                {
+                    Console.Clear();
+                    DBConnector myDB = DBConnector.GetInstance();
+                    myDB.PrintPlayerStack(username);
+                    Tools.PressAnyKey();
+                    Console.Clear();
+                }
+                if (DeckCraftingInput == 5)
                 {
                     Console.Clear();
                     break;
