@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace MonsterTradingCardGame
 {
-    public class Deck : IDeck
+    public class Deck
     {
         public Dictionary<string, ICard> MyCards;
         private const int maxCardCount = 5;

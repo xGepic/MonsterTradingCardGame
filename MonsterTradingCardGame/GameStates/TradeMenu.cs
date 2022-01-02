@@ -1,10 +1,11 @@
 ﻿using System;
-
+using System.Collections.Generic;
 
 namespace MonsterTradingCardGame
 {
     static class TradeMenu
     {
+        private const int TradeCardCount = 4;
         public static void PrintTradeMenu()
         {
             Console.WriteLine("TRADE MENU");
@@ -41,13 +42,67 @@ namespace MonsterTradingCardGame
                 int tradeInput = GetTradeInput();
                 if (tradeInput == 1)
                 {
-                    //to do
+                    DBConnector myDB = DBConnector.GetInstance();
+                    List<string> tradeCards = myDB.GetTradeCards();
+                    int cardToAdd = GetTradeCard();
+                    int cardToRemove = GetRemoveCard(username);
+                    myDB.TradeCard(username, tradeCards, cardToAdd, cardToRemove);
+                    Tools.PressToContinue();
+                    Console.Clear();
                 }
                 if (tradeInput == 2)
                 {
                     Console.Clear();
                     break;
                 }
+            }
+        }
+        public static int GetTradeCard()
+        {
+            Console.Write("\nInput: ");
+            int input;
+            try
+            {
+                input = Convert.ToInt32(Console.ReadLine());
+                if (input > TradeCardCount || input < 1)
+                {
+                    throw new ArgumentException("Invalid Input!");
+                }
+                else
+                {
+                    return input;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Clear();
+                Console.WriteLine("\n[Error] " + e.Message + "\n\n");
+                return 0;
+            }
+        }
+        public static int GetRemoveCard(string username)
+        {
+            DBConnector myDB = DBConnector.GetInstance();
+            myDB.PrintPlayerStack(username);
+            Console.WriteLine("\nWhich Card would you like to trade away?: ");
+            int input;
+            try
+            {
+                input = Convert.ToInt32(Console.ReadLine());
+                if (input > myDB.CountPlayerStack(username) || input < 1)
+                {
+                    throw new ArgumentException("Invalid Input!");
+                }
+                else
+                {
+                    return input;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Clear();
+                Console.WriteLine("\n[Error] " + e.Message + "\n\n");
+                return 0;
             }
         }
     }
