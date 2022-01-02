@@ -68,5 +68,13 @@ namespace MonsterTradingCardGame
             Console.WriteLine($"You traded away the {response} and received the {cardlist[cardToAdd - 1]}!");
             Close();
         }
+        public void RemoveCardsForTrading(string username)
+        {
+            Open();
+            NpgsqlCommand cmd = new("DELETE FROM deckcards WHERE username = @name", connection);
+            cmd.Parameters.AddWithValue("name", username);
+            cmd.ExecuteScalar();
+            Close();
+        }
     }
 }
