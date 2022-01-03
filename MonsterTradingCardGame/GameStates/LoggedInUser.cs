@@ -65,6 +65,14 @@ namespace MonsterTradingCardGame
                     Console.WriteLine("GoodBye!");
                     Environment.Exit(0);
                 }
+                if(input == 9)
+                {
+                    Console.Clear();
+                    DBConnector myDB = DBConnector.GetInstance();
+                    myDB.EmergencyCoins(userName);
+                    Tools.PressAnyKey();
+                    Console.Clear();
+                }
             }
         }
     }
