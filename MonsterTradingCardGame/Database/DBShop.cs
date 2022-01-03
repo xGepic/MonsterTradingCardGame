@@ -67,5 +67,20 @@ namespace MonsterTradingCardGame
             }
             Close();
         }
+        public int GetPlayerCoins(string username)
+        {
+            Open();
+            NpgsqlCommand myCommand = new("SELECT coins FROM player WHERE username = @name;", connection);
+            myCommand.Parameters.AddWithValue("name", username);
+            Object coins = myCommand.ExecuteScalar();
+            if (coins != null)
+            {
+                int playerCoins = Convert.ToInt32(coins);
+                Close();
+                return playerCoins;
+            }
+            Close();
+            return 0;
+        }
     }
 }

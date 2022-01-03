@@ -27,3 +27,4 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "<Pending>", Scope = "member", Target = "~M:MonsterTradingCardGame.DBConnector.GetTradeCards~System.Collections.Generic.List{System.String}")]
 [assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "<Pending>", Scope = "member", Target = "~M:MonsterTradingCardGame.DBConnector.CountPlayerStack(System.String)~System.Int32")]
 [assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "<Pending>", Scope = "member", Target = "~M:MonsterTradingCardGame.DBConnector.TradeCard(System.String,System.Collections.Generic.List{System.String},System.Int32,System.Int32)")]
+[assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "<Pending>", Scope = "member", Target = "~M:MonsterTradingCardGame.DBConnector.PrintDeck(System.String)")]
