@@ -48,7 +48,7 @@ namespace MonsterTradingCardGame
         }
         public void AddCardToStack(string username, List<string> cardList)
         {
-            List<string> tempList = new List<string>(cardList);
+            List<string> tempList = new(cardList);
             foreach (var item in tempList)
             {
                 if (CheckIfCardIsThere(item))
