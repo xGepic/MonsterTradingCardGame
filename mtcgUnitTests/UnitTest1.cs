@@ -5,15 +5,12 @@ namespace mtcgUnitTests
 {
     public class Tests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         [Test]
-        public void Test1()
+        public void TestMonsterBattle()
         {
-            Assert.Pass();
+            // ARRANGE
+            MonsterCard Monster1 = new("testCard1", 15, ElementType.Fire, MonsterType.Knight);
+            MonsterCard Monster2 = new("testCard2", 10, ElementType.Water, MonsterType.Goblin);
         }
     }
 }

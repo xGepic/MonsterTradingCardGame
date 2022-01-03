@@ -1,6 +1,6 @@
 ﻿namespace MonsterTradingCardGame
 {
-    class MonsterCard : ICard
+    public class MonsterCard : ICard
     {
         public string Name { get; set; }
         public int Damage { get; set; }
