@@ -50,6 +50,17 @@ namespace MonsterTradingCardGame
         public void TradeCard(string username, List<string> cardlist, int cardToAdd, int cardToRemove)
         {
             Open();
+
+            NpgsqlCommand checkCmd = new("SELECT * FROM stackcards WHERE cardname = @name", connection);
+            checkCmd.Parameters.AddWithValue("name", cardlist[cardToAdd - 1]);
+            Object checkResponse = checkCmd.ExecuteScalar();
+            if (checkResponse != null)
+            {
+                Console.Clear();
+                Console.WriteLine("You already have that Card!");
+                return;
+            }
+
             NpgsqlCommand getCmd = new("SELECT cardname FROM stackcards WHERE username = @name LIMIT 1 OFFSET @offset;", connection);
             getCmd.Parameters.AddWithValue("name", username);
             getCmd.Parameters.AddWithValue("offset", cardToRemove - 1);

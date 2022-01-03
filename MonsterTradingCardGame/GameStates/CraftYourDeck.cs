@@ -75,6 +75,7 @@ namespace MonsterTradingCardGame
                     Console.Clear();
                     DBConnector myDB = DBConnector.GetInstance();
                     myDB.PrintPlayerStack(username);
+                    Tools.PressToContinue();
                     Console.Clear();
                 }
                 if (DeckCraftingInput == 5)
