@@ -11,6 +11,10 @@ INSERT INTO card VALUES('FireSpell', 10, 0, 1);
 INSERT INTO card VALUES('WaterSpell', 10, 0, 2);
 INSERT INTO card VALUES('GrassSpell', 10, 0, 0);
 
+INSERT INTO card VALUES('WaterKnight', 15, 1, 2, 4);
+INSERT INTO card VALUES('GrassKnight', 15, 1, 0, 4);
+INSERT INTO card VALUES('FireWizzard', 10, 1, 1, 2);
+INSERT INTO card VALUES('GrassWizzard', 10, 1, 0, 2);
 
 
 
