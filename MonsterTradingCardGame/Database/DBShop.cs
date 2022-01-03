@@ -48,10 +48,18 @@ namespace MonsterTradingCardGame
         }
         public void AddCardToStack(string username, List<string> cardList)
         {
+            List<string> tempList = new List<string>(cardList);
+            foreach (var item in tempList)
+            {
+                if (CheckIfCardIsThere(item))
+                {
+                    cardList.Remove(item);
+                }
+            }
             Open();
             NpgsqlCommand searchCommand = new("SELECT cardname FROM stackcards WHERE username = @name AND cardname = @name2", connection);
             NpgsqlCommand insertCommand = new("INSERT INTO stackcards (username, cardname) VALUES (@username, @cardname);", connection);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < cardList.Count; i++)
             {
                 searchCommand.Parameters.Clear();
                 searchCommand.Parameters.AddWithValue("name", username);
@@ -66,6 +74,20 @@ namespace MonsterTradingCardGame
                 }
             }
             Close();
+        }
+        public bool CheckIfCardIsThere(string cardname)
+        {
+            Open();
+            NpgsqlCommand checkCmd = new("SELECT * FROM stackcards WHERE cardname = @card", connection);
+            checkCmd.Parameters.AddWithValue("card", cardname);
+            Object response = checkCmd.ExecuteScalar();
+            if (response == null)
+            {
+                Close();
+                return false;
+            }
+            Close();
+            return true;
         }
         public int GetPlayerCoins(string username)
         {

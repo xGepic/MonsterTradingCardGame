@@ -27,6 +27,7 @@ namespace MonsterTradingCardGame
         {
             int playerCoins = GetPlayerCoins(username);
             int playerCards = CountPlayerStack(username);
+            Open();
             int newCoins = 20;
             int minPlayerCoins = 5;
             int minPlayerCards = 4;
@@ -38,6 +39,7 @@ namespace MonsterTradingCardGame
                 cmd.Parameters.AddWithValue("name", username);
                 cmd.ExecuteNonQuery();
                 Close();
+                return;
             }
             else
             {

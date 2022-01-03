@@ -92,6 +92,7 @@ namespace MonsterTradingCardGame
                         index++;
                     }
                     Close();
+                    Tools.PressAnyKey();
                 }
             }
         }
