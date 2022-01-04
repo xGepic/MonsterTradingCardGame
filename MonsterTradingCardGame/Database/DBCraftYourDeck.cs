@@ -49,7 +49,6 @@ namespace MonsterTradingCardGame
                 Console.Clear();
                 Console.WriteLine("You have no Cards!\n");
                 Close();
-                Tools.PressAnyKey();
             }
             else
             {
@@ -78,7 +77,6 @@ namespace MonsterTradingCardGame
             {
                 Console.WriteLine("You have no Cards!\n");
                 Close();
-                Tools.PressAnyKey();
             }
             else
             {

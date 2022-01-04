@@ -68,6 +68,7 @@ namespace MonsterTradingCardGame
                     Console.Clear();
                     DBConnector myDB = DBConnector.GetInstance();
                     myDB.PrintDeck(username);
+                    Tools.PressAnyKey();
                     Console.Clear();
                 }
                 if (DeckCraftingInput == 4)
@@ -75,7 +76,7 @@ namespace MonsterTradingCardGame
                     Console.Clear();
                     DBConnector myDB = DBConnector.GetInstance();
                     myDB.PrintPlayerStack(username);
-                    Tools.PressToContinue();
+                    Tools.PressAnyKey();
                     Console.Clear();
                 }
                 if (DeckCraftingInput == 5)
