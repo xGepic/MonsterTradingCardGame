@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace MonsterTradingCardGame
 {
@@ -53,6 +54,7 @@ namespace MonsterTradingCardGame
                     Console.Clear();
                     User Player1 = GetPlayer(username);
                     User Player2 = GetBot(GetBotStrenght());
+                    PrepBattle();
                     BattleHandler myBattle = new(Player1, Player2);
                     myBattle.StartBattle();
                     Tools.PressToContinue();
@@ -96,6 +98,12 @@ namespace MonsterTradingCardGame
                     Console.WriteLine("\n[Error] " + e.Message + "\n\n");
                 }
             }
+        }
+        public static void PrepBattle()
+        {
+            Console.WriteLine("\nThe Battle will Start in 3 Seconds!");
+            Thread.Sleep(3000);
+            Console.Clear();
         }
     }
 }

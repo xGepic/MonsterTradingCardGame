@@ -55,7 +55,12 @@ namespace MonsterTradingCardGame
                         return;
                     }
                     myDB.PrintPlayerStack(username);
-                    CardList = CraftYourDeck.GetCardsForDeck();
+                    CardList = CraftYourDeck.GetCardsForDeck(username);
+                    if (CardList == null)
+                    {
+                        Tools.PressToContinue();
+                        return;
+                    }
                     myDB.AddCardsToDeck(username, CardList);
                 }
                 if (DeckCraftingInput == 2)
@@ -86,8 +91,14 @@ namespace MonsterTradingCardGame
                 }
             }
         }
-        public static List<int> GetCardsForDeck()
+        public static List<int> GetCardsForDeck(string username)
         {
+            DBConnector myDB = DBConnector.GetInstance();
+            if (myDB.CountPlayerStack(username) < 4)
+            {
+                Console.WriteLine("You dont have enough Cards!");
+                return null;
+            }
             int index = 4;
             List<int> cardlist = new();
             try
