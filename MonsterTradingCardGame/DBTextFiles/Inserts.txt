@@ -10,13 +10,22 @@ INSERT INTO card VALUES('FireOrk', 15, 1, 1, 3);
 INSERT INTO card VALUES('FireSpell', 10, 0, 1);
 INSERT INTO card VALUES('WaterSpell', 10, 0, 2);
 INSERT INTO card VALUES('GrassSpell', 10, 0, 0);
-
 INSERT INTO card VALUES('WaterKnight', 15, 1, 2, 4);
 INSERT INTO card VALUES('GrassKnight', 15, 1, 0, 4);
 INSERT INTO card VALUES('FireWizzard', 10, 1, 1, 2);
 INSERT INTO card VALUES('GrassWizzard', 10, 1, 0, 2);
-
-
+INSERT INTO card VALUES('FireDragon', 20, 1, 1, 1);
+INSERT INTO card VALUES('WaterDragon', 20, 1, 2, 1);
+INSERT INTO card VALUES('FireGoblin', 10, 1, 1, 0);
+INSERT INTO card VALUES('GrassGoblin', 10, 1, 0, 0);
+INSERT INTO card VALUES('WaterOrk', 15, 1, 2, 3);
+INSERT INTO card VALUES('GrassOrk', 15, 1, 0, 3);
+INSERT INTO card VALUES('Fireball', 15, 0, 1);
+INSERT INTO card VALUES('PyroBlast', 20, 0, 1);
+INSERT INTO card VALUES('Surfer', 15, 0, 2);
+INSERT INTO card VALUES('TidalWaves', 20, 0, 2);
+INSERT INTO card VALUES('VineWhip', 15, 0, 0);
+INSERT INTO card VALUES('SolarBeam', 20, 0, 0);
 
 
 //CheatSheet

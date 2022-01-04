@@ -22,5 +22,12 @@ namespace MonsterTradingCardGame
         {
             connection.Close();
         }
+        public void AddCardToCards()
+        {
+            Open();
+            NpgsqlCommand insertCmd = new("INSERT INTO card VALUES('SolarBeam', 20, 0, 0);", connection);
+            insertCmd.ExecuteNonQuery();
+            Close();
+        }
     }
 }
