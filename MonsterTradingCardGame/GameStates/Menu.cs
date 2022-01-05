@@ -55,7 +55,9 @@ namespace MonsterTradingCardGame
             else
             {
                 Console.Clear();
-                Console.WriteLine("\n[Error] Invalid Credentials!\n");
+                Console.WriteLine("[Error] Invalid Credentials!\n");
+                Tools.PressAnyKey();
+                Console.Clear();
                 return;
             }
         }
