@@ -2,7 +2,7 @@
 
 namespace MonsterTradingCardGame
 {
-    class Battle
+    public class Battle
     {
         private const int HalfOrDouble = 2;
         public static int DamageCalc(ICard Card1, ICard Card2)

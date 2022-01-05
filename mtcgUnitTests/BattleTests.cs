@@ -13,11 +13,10 @@ namespace mtcgUnitTests
             MonsterCard Monster2 = new("testCard2", 10, ElementType.Water, MonsterType.Goblin);
 
             // ACT 
-
+            var result = Battle.DamageCalc(Monster1, Monster2);
 
             // ASSERT 
-
-
+            Assert.AreEqual(result, 1);
         }
         [Test]
         public void TestSpellBattle()
@@ -27,25 +26,36 @@ namespace mtcgUnitTests
             SpellCard Spell2 = new("testCard2", 10, ElementType.Water);
 
             // ACT 
-
+            var result = Battle.DamageCalc(Spell1, Spell2);
 
             // ASSERT 
-
-
+            Assert.AreEqual(result, 2);
         }
         [Test]
         public void TestMixBattle()
         {
             // ARRANGE
             MonsterCard Monster1 = new("testCard1", 15, ElementType.Fire, MonsterType.Knight);
+            SpellCard Spell1 = new("testCard1", 20, ElementType.Fire);
+
+            // ACT 
+            var result = Battle.DamageCalc(Monster1, Spell1);
+
+            // ASSERT 
+            Assert.AreEqual(result, 2);
+        }
+        [Test]
+        public void CheckDraw()
+        {
+            // ARRANGE
+            MonsterCard Monster1 = new("testCard1", 15, ElementType.Fire, MonsterType.Knight);
             SpellCard Spell1 = new("testCard1", 15, ElementType.Fire);
 
             // ACT 
-
+            var result = Battle.DamageCalc(Monster1, Spell1);
 
             // ASSERT 
-
-
+            Assert.AreEqual(result, 3);
         }
     }
 }
