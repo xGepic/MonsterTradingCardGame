@@ -42,10 +42,7 @@ namespace MonsterTradingCardGame
                 if (input == 5)
                 {
                     Console.Clear();
-                    Console.WriteLine("MY PROFILE\n");
-                    DBConnector myDB = DBConnector.GetInstance();
-                    myDB.GetProfile(userName);
-                    Tools.PressAnyKey();
+                    ProfileMenu.GetProfileMenu(userName);
                     Console.Clear();
                 }
                 if (input == 6)
