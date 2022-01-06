@@ -21,8 +21,20 @@ namespace mtcgUnitTests
             // ASSERT 
             Assert.AreEqual(result, true);
         }
-        [TearDown]
-        public void Cleanup()
+        [Test]
+        public void TestSignUp()
+        {
+            // ARRANGE
+            DBConnector cmd = DBConnector.GetInstance();
+
+            // ACT
+            var result = cmd.LogInUser(username, pw);
+
+            // ASSERT 
+            Assert.AreEqual(result, true);
+        }
+        [OneTimeTearDown]
+        public void TearDown()
         {
             DBConnector cmd = DBConnector.GetInstance();
             cmd.RemoveUser(username);
