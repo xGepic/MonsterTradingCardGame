@@ -2,7 +2,7 @@
 
 namespace MonsterTradingCardGame
 {
-    class User
+    public class User
     {
         public readonly string Username;
         public Deck MyDeck = new();

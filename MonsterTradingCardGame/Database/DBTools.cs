@@ -39,9 +39,19 @@ namespace MonsterTradingCardGame
             Object response = cmd.ExecuteScalar();
             if (response == null)
             {
+                Close();
                 return false;
             }
+            Close();
             return true;
+        }
+        public void RemoveUser(string username)
+        {
+            Open();
+            NpgsqlCommand cmd = new("DELETE FROM player WHERE username = @name", connection);
+            cmd.Parameters.AddWithValue("name", username);
+            cmd.ExecuteScalar();
+            Close();
         }
     }
 }
