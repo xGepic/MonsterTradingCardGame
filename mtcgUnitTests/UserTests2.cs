@@ -5,8 +5,8 @@ namespace mtcgUnitTests
 {
     class UserTests2
     {
-        private readonly string username = "CardTester";
-        private readonly string username2 = "CardTester2";
+        private readonly string username = "UserTester";
+        private readonly string username2 = "UserTester2";
         private readonly string pw = "unit123";
         private readonly int elo = 1200;
         private readonly int coins = 20;

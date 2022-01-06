@@ -29,5 +29,13 @@ namespace MonsterTradingCardGame
             cmd.ExecuteScalar();
             Close();
         }
+        public void RemoveCardFromStack(string cardname)
+        {
+            Open();
+            NpgsqlCommand cmd = new("DELETE FROM stackcards WHERE cardname = @name", connection);
+            cmd.Parameters.AddWithValue("name", cardname);
+            cmd.ExecuteScalar();
+            Close();
+        }
     }
 }
