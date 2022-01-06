@@ -32,3 +32,4 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "<Pending>", Scope = "member", Target = "~M:MonsterTradingCardGame.DBConnector.UpdatePassword(System.String,System.String)")]
 [assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "<Pending>", Scope = "member", Target = "~M:MonsterTradingCardGame.DBConnector.CheckIfUserExists(System.String)~System.Boolean")]
 [assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "<Pending>", Scope = "member", Target = "~M:MonsterTradingCardGame.DBConnector.RemoveUser(System.String)")]
+[assembly: SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "<Pending>", Scope = "member", Target = "~M:MonsterTradingCardGame.DBConnector.GetPWHash(System.String)~System.String")]

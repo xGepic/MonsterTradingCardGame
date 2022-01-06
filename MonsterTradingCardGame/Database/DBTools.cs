@@ -53,5 +53,14 @@ namespace MonsterTradingCardGame
             cmd.ExecuteScalar();
             Close();
         }
+        public string GetPWHash(string username)
+        {
+            Open();
+            NpgsqlCommand cmd = new("SELECT password FROM player WHERE username = @name", connection);
+            cmd.Parameters.AddWithValue("name", username);
+            string response = cmd.ExecuteScalar().ToString();
+            Close();
+            return response;
+        }
     }
 }
