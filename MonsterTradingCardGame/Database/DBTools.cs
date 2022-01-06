@@ -31,36 +31,5 @@ namespace MonsterTradingCardGame
             }
             Close();
         }
-        public bool CheckIfUserExists(string username)
-        {
-            Open();
-            NpgsqlCommand cmd = new("SELECT * FROM player WHERE username = @name", connection);
-            cmd.Parameters.AddWithValue("name", username);
-            Object response = cmd.ExecuteScalar();
-            if (response == null)
-            {
-                Close();
-                return false;
-            }
-            Close();
-            return true;
-        }
-        public void RemoveUser(string username)
-        {
-            Open();
-            NpgsqlCommand cmd = new("DELETE FROM player WHERE username = @name", connection);
-            cmd.Parameters.AddWithValue("name", username);
-            cmd.ExecuteScalar();
-            Close();
-        }
-        public string GetPWHash(string username)
-        {
-            Open();
-            NpgsqlCommand cmd = new("SELECT password FROM player WHERE username = @name", connection);
-            cmd.Parameters.AddWithValue("name", username);
-            string response = cmd.ExecuteScalar().ToString();
-            Close();
-            return response;
-        }
     }
 }
