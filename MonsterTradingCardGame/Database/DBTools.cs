@@ -31,5 +31,17 @@ namespace MonsterTradingCardGame
             }
             Close();
         }
+        public bool CheckIfUserExists(string username)
+        {
+            Open();
+            NpgsqlCommand cmd = new("SELECT * FROM player WHERE username = @name", connection);
+            cmd.Parameters.AddWithValue("name", username);
+            Object response = cmd.ExecuteScalar();
+            if (response == null)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
