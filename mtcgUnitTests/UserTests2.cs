@@ -3,7 +3,7 @@ using MonsterTradingCardGame;
 
 namespace mtcgUnitTests
 {
-    class CardTests
+    class UserTests2
     {
         private readonly string username = "CardTester";
         private readonly string username2 = "CardTester2";
