@@ -3,7 +3,7 @@ using MonsterTradingCardGame;
 
 namespace mtcgUnitTests
 {
-    public class Tests
+    public class BattleTests
     {
         [Test]
         public void TestMonsterBattle()
