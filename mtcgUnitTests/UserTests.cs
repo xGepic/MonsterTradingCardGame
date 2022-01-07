@@ -11,6 +11,13 @@ namespace mtcgUnitTests
         private readonly string newPW = "goodOne";
         private readonly int elo = 1200;
         private readonly int coins = 20;
+        [OneTimeTearDown]
+        public void TearDown()
+        {
+            DBConnector cmd = DBConnector.GetInstance();
+            cmd.RemoveUser(username);
+            cmd.RemoveUser(username2);
+        }
         [Test]
         public void TestRegister()
         {
@@ -49,14 +56,6 @@ namespace mtcgUnitTests
 
             // ASSERT
             Assert.AreNotEqual(string1, string2);
-        }
-
-        [OneTimeTearDown]
-        public void TearDown()
-        {
-            DBConnector cmd = DBConnector.GetInstance();
-            cmd.RemoveUser(username);
-            cmd.RemoveUser(username2);
         }
     }
 }

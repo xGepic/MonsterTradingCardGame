@@ -7,11 +7,24 @@ namespace mtcgUnitTests
     class CardTests
     {
         private readonly string username = "CardTester";
+        private readonly string username2 = "CardTester2";
         private readonly string pw = "unit123";
         private readonly int elo = 1200;
         private readonly int coins = 20;
         private readonly string card1 = "FireKnight";
         private readonly string card2 = "WaterWizzard";
+        private readonly string card3 = "WaterGoblin";
+
+        [OneTimeTearDown]
+        public void TearDown()
+        {
+            DBConnector cmd = DBConnector.GetInstance();
+            cmd.RemoveCardFromStack(card1);
+            cmd.RemoveCardFromStack(card2);
+            cmd.RemoveCardFromStack(card3);
+            cmd.RemoveUser(username);
+            cmd.RemoveUser(username2);
+        }
         [Test]
         public void TestCountPlayerStack()
         {
@@ -34,20 +47,16 @@ namespace mtcgUnitTests
         {
             // ARRANGE
             DBConnector cmd = DBConnector.GetInstance();
+            List<string> cardlist = new();
+            cardlist.Add(card3);
 
             // ACT 
-            var result = cmd.CheckIfCardIsThere(card1);
+            cmd.RegisterUser(username2, pw, elo, coins);
+            cmd.AddCardToStack(username2, cardlist);
+            var result = cmd.CheckIfCardIsThere(card3);
 
             // ASSERT
             Assert.AreEqual(result, true);
-        }
-        [OneTimeTearDown]
-        public void TearDown()
-        {
-            //DBConnector cmd = DBConnector.GetInstance();
-            //cmd.RemoveCardFromStack(card1);
-            //cmd.RemoveCardFromStack(card2);
-            //cmd.RemoveUser(username);
         }
     }
 }
