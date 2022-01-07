@@ -19,6 +19,20 @@ namespace mtcgUnitTests
             Assert.AreEqual(result, 1);
         }
         [Test]
+        public void TestMonsterBattleReversed()
+        {
+            // ARRANGE
+            MonsterCard Monster1 = new("testCard1", 15, ElementType.Fire, MonsterType.Knight);
+            MonsterCard Monster2 = new("testCard2", 10, ElementType.Water, MonsterType.Goblin);
+
+            // ACT 
+            var result = Battle.DamageCalc(Monster2, Monster1);
+
+            // ASSERT 
+            Assert.AreEqual(result, 2);
+
+        }
+        [Test]
         public void TestSpellBattle()
         {
             // ARRANGE
