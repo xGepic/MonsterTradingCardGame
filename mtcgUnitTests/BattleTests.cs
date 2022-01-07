@@ -57,5 +57,18 @@ namespace mtcgUnitTests
             // ASSERT 
             Assert.AreEqual(result, 3);
         }
+        [Test]
+        public void TestKraken()
+        {
+            // ARRANGE
+            MonsterCard Kraken = new("testCard1", 15, ElementType.Water, MonsterType.Kraken);
+            SpellCard Spell = new("testCard1", 15, ElementType.Fire);
+
+            // ACT 
+            var result = Battle.DamageCalc(Kraken, Spell);
+
+            // ASSERT 
+            Assert.AreEqual(result, 1);
+        }
     }
 }
