@@ -12,7 +12,6 @@ namespace mtcgUnitTests
         private readonly int coins = 20;
         private readonly string card1 = "FireKnight";
         private readonly string card2 = "WaterWizzard";
-
         [Test]
         public void TestCountPlayerStack()
         {
@@ -30,13 +29,25 @@ namespace mtcgUnitTests
             // ASSERT 
             Assert.AreEqual(result, 2);
         }
+        [Test]
+        public void TestCheckIfCardIsThere()
+        {
+            // ARRANGE
+            DBConnector cmd = DBConnector.GetInstance();
+
+            // ACT 
+            var result = cmd.CheckIfCardIsThere(card1);
+
+            // ASSERT
+            Assert.AreEqual(result, true);
+        }
         [OneTimeTearDown]
         public void TearDown()
         {
-            DBConnector cmd = DBConnector.GetInstance();
-            cmd.RemoveCardFromStack(card1);
-            cmd.RemoveCardFromStack(card2);
-            cmd.RemoveUser(username);
+            //DBConnector cmd = DBConnector.GetInstance();
+            //cmd.RemoveCardFromStack(card1);
+            //cmd.RemoveCardFromStack(card2);
+            //cmd.RemoveUser(username);
         }
     }
 }
