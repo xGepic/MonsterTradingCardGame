@@ -30,7 +30,9 @@ namespace MonsterTradingCardGame
             catch (Exception e)
             {
                 Console.Clear();
-                Console.WriteLine("\n[Error] " + e.Message + "\n\n");
+                Console.WriteLine("[Error] " + e.Message + "\n\n");
+                Tools.PressAnyKey();
+                Console.Clear();
                 return 0;
             }
         }
@@ -39,9 +41,9 @@ namespace MonsterTradingCardGame
             string pwd1;
             string pwd2;
             DBConnector myDB = DBConnector.GetInstance();
-            myDB.GetProfile(username);
             while (true)
             {
+                myDB.GetProfile(username);
                 PrintProfileMenu();
                 int profileInput = GetProfileInput();
                 if (profileInput == 1)

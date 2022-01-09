@@ -42,6 +42,8 @@ namespace MonsterTradingCardGame
             {
                 Console.Clear();
                 Console.WriteLine("[Error] " + e.Message + "\n\n");
+                Tools.PressAnyKey();
+                Console.Clear();
                 return 0;
             }
         }
