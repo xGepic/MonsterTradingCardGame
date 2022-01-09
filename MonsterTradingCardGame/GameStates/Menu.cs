@@ -29,7 +29,10 @@ namespace MonsterTradingCardGame
             }
             catch (Exception e)
             {
-                Console.WriteLine("\n[Error] " + e.Message + "\n\n");
+                Console.Clear();
+                Console.WriteLine("[Error] " + e.Message + "\n\n");
+                Tools.PressAnyKey();
+                Console.Clear();
                 return 0;
             }
         }
