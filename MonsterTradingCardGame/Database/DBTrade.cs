@@ -58,6 +58,7 @@ namespace MonsterTradingCardGame
             {
                 Console.Clear();
                 Console.WriteLine("You already have that Card!");
+                Close();
                 return;
             }
 

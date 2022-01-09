@@ -14,13 +14,11 @@ namespace MonsterTradingCardGame
                 if (input == 1)
                 {
                     Console.Clear();
-                    Console.WriteLine("WELCOME TO THE ARENA\n");
                     BattleMenu.GetBattleMenu(userName);
                 }
                 if (input == 2)
                 {
                     Console.Clear();
-                    Console.WriteLine("WELCOME TO THE SHOP\n");
                     Shop.ShopMenu(userName);
                     Console.Clear();
                 }

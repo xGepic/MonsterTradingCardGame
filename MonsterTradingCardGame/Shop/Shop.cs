@@ -6,6 +6,7 @@ namespace MonsterTradingCardGame
     {
         public static void PrintShopMenu()
         {
+            Console.WriteLine("WELCOME TO THE SHOP\n");
             Console.WriteLine("1 - Buy a Card Pack (5 Coins)");
             Console.WriteLine("2 - Go Back");
             Console.Write("\nInput: ");

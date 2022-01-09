@@ -7,6 +7,7 @@ namespace MonsterTradingCardGame
     {
         public static void PrintBattleMenu()
         {
+            Console.WriteLine("WELCOME TO THE ARENA\n");
             Console.WriteLine("1 - Battle against the Computer");
             Console.WriteLine("2 - Go Back");
             Console.Write("\nInput: ");
