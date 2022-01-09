@@ -8,7 +8,7 @@ namespace MonsterTradingCardGame
         private const int TradeCardCount = 4;
         public static void PrintTradeMenu()
         {
-            Console.WriteLine("TRADE MENU");
+            Console.WriteLine("TRADE MENU\n");
             Console.WriteLine("1 - Trade Cards");
             Console.WriteLine("2 - Go Back");
             Console.Write("\nInput: ");

@@ -7,7 +7,7 @@ namespace MonsterTradingCardGame
     {
         public static void PrintProfileMenu()
         {
-            Console.WriteLine("MY PROFILE\n");
+            Console.WriteLine();
             Console.WriteLine("1 - Change Password");
             Console.WriteLine("2 - Go Back");
             Console.Write("\nInput: ");
@@ -43,6 +43,7 @@ namespace MonsterTradingCardGame
             DBConnector myDB = DBConnector.GetInstance();
             while (true)
             {
+                Console.WriteLine("MY PROFILE\n");
                 myDB.GetProfile(username);
                 PrintProfileMenu();
                 int profileInput = GetProfileInput();
