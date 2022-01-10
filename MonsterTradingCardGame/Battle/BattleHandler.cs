@@ -71,8 +71,8 @@ namespace MonsterTradingCardGame
                 DBConnector myDB = DBConnector.GetInstance();
                 myDB.PlayerLostDeck(Player1.Username);
                 myDB.PlayerLostStack(Player1.Username, LoserDeck);
-                float probablilityPlayer1 = Probability(Player1.Elo, Bot.Elo);
-                float probablilityPlayer2 = Probability(Bot.Elo, Player1.Elo);
+                float probablilityPlayer1 = Probability(Bot.Elo, Player1.Elo);
+                float probablilityPlayer2 = Probability(Player1.Elo, Bot.Elo);
                 Player1.Elo += (int)Math.Round(kValue * (0 - probablilityPlayer1));
                 Bot.Elo += (int)Math.Round(kValue * (1 - probablilityPlayer2));
                 Console.WriteLine($"Your new Elo is : {Player1.Elo}");
@@ -83,8 +83,8 @@ namespace MonsterTradingCardGame
                 Console.WriteLine($"{Player1.Username} is the Winner!\n");
                 DBConnector myDB = DBConnector.GetInstance();
                 myDB.PlayerWinsCards(Player1.Username, WinnerDeck);
-                float probablilityPlayer1 = Probability(Player1.Elo, Bot.Elo);
-                float probablilityPlayer2 = Probability(Bot.Elo, Player1.Elo);
+                float probablilityPlayer1 = Probability(Bot.Elo, Player1.Elo);
+                float probablilityPlayer2 = Probability(Player1.Elo, Bot.Elo);
                 Player1.Elo += (int)Math.Round(kValue * (1 - probablilityPlayer1));
                 Bot.Elo += (int)Math.Round(kValue * (0 - probablilityPlayer2));
                 Console.WriteLine($"Your new Elo is : {Player1.Elo}");
